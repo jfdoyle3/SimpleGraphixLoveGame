@@ -1,8 +1,7 @@
-# Starter Repository Template
+# Simple Graphix Love Game
 
-This Repository has a customized gitignore file
-ignores:
-VS CODE, Visual Studio, Eclipse IDE, Intellij IDEA, Python,
-Gradle, Maven.
+This is my first game using tilesets and sprites to make
+a graphical game.
+Unsure what type of game Action, RPG, Adventure, Shooter
 
-- added Visual Studio in gitignore 1/31/2023
+Started with code from Simple Love Game
