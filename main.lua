@@ -53,8 +53,11 @@ function love.load()
 
 -- Buttons
 
-	buttonA=Button.new("Attack",200,300,200,100,false)
-	buttonD=Button.new("Defend",475,300,200,100,false)
+	buttonUp=Button.new("UP",200,300,200,100,false)
+	buttonDown=Button.new("Down",475,300,200,100,false)
+	buttonLeft=Button.new("Left",200,300,200,100,false)
+	buttonRight=Button.new("Right",475,300,200,100,false)
+	
 
 
 -- Player
@@ -79,68 +82,11 @@ end
 	]]
 function love.mousepressed(x, y)
 
-	if x > buttonA.posX and x < buttonA.posX+buttonA.sizeX and 
-       y > buttonA.posY and y < buttonA.posY+buttonA.sizeY then
-		buttonA.state = true
-		round=round+1
-	elseif x > buttonD.posX and x < buttonD.posX+buttonD.sizeX and 
-           y > buttonD.posY and y < buttonD.posY+buttonD.sizeY then
-		buttonD.state = true
-		round=round+1
-	end
 
 end
---[[
-	Update
-		This function update every frame per sec
-		typical frame rate is 60
-		This function runs 60 times in 1 minute
-		
-		All Play combos:
-		-	Player Attack -> NPC Attack
-		-	Player Defend -> NPC Attack
-		-	Player Attack -> NPC Defend
-		-	Player Defend -> NPC Defend
-		
-		
-		math for damage:
-		attack - 1 = attackb
-		attackb - attack = total amount dmg
-		
-]]
+
 function love.update()
-	if buttonA.state and npcAction%2 == 1 then
-	    npcMiss=npcMiss+1 -- Player Attack -> NPC Defend
-		buttonA.state = false
-		npcAction = math.random(10)
-	elseif buttonD.state and npcAction%2 == 0 then
-		npcScore = npcScore + 1 -- Player Defend -> NPC Attack
-		buttonD.state = false
-		npcAction = math.random(10)
-	end
-	
-	if buttonA.state and npcAction%2 == 0 then
-		playerScore = playerScore+1 -- Player Attack -> NPC Attack       
-		buttonA.state = false
-		npcAction = math.random(10)
-	elseif buttonD.state and npcAction%2 == 1 then
-		playerMiss=playerMiss+1  -- Player Defend -> NPC Defend
-		buttonD.state = false
-		npcAction = math.random(10)
-	end
 
---[[
-		Putting this line of code
-		will randomize every second.
-	     target=math.random(10)
-	]]
---[[
-	Counts Rounds
-	]]
-
-	if round==10 then
-		os.exit()
-	end
 	
 end
 
@@ -149,15 +95,15 @@ end
 ]]
 function love.draw()
 -- Button Layer
-
+	love.graphics.rectangle("line",0,0,800,600)
 -- Attack Button
 	love.graphics.setColor(0,255,0)
-	love.graphics.rectangle("fill",buttonA.posX,buttonA.posY,buttonA.sizeX,buttonA.sizeY)
+	love.graphics.rectangle("fill",buttonUp.posX,buttonUp.posY,buttonUp.sizeX,buttonUp.sizeY)
 	love.graphics.setColor(255,255,255)
 
 -- Defend Button
 	love.graphics.setColor(255,0,0)
-	love.graphics.recangle("fill",buttonD.posX,buttonD.posY,buttonD.sizeX,buttonD.sizeY)
+	love.graphics.rectangle("fill",buttonRight.posX,buttonRight.posY,buttonRight.sizeX,buttonRight.sizeY)
 	love.graphics.setColor(255,255,255)
 
 end
