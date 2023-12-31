@@ -157,26 +157,9 @@ function love.draw()
 
 -- Defend Button
 	love.graphics.setColor(255,0,0)
-	love.graphics.rectangle("fill",buttonD.posX,buttonD.posY,buttonD.sizeX,buttonD.sizeY)
+	love.graphics.recangle("fill",buttonD.posX,buttonD.posY,buttonD.sizeX,buttonD.sizeY)
 	love.graphics.setColor(255,255,255)
 
--- Text Layer
-
--- Button Text
-	love.graphics.setColor(0,0,0)
-	love.graphics.print(buttonA.title,285,340)
-	love.graphics.print(buttonD.title,550,340)
-	love.graphics.setColor(255,255,255)
-
--- UI
-	love.graphics.print("Round:\t"..round,350,40)
-	love.graphics.print(player.name,250,100)
-	love.graphics.print("life:\t"..player.life,250,115)
---	love.graphics.print("str:\t"..player.str,250,130)
---	love.graphics.print("dex:\t"..player.dex,250,145)
-	love.graphics.print("VS.",400,100)
-	love.graphics.print(npc.name,500,100)
-	love.graphics.print("life:\t"..npc.life,500,115)
 end
 
 
