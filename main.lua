@@ -85,8 +85,8 @@ function love.mousepressed(x, y)
 
 end
 
-function love.update()
-
+function love.update(dt)
+	buttonUp.posX=buttonUp.posX+10*dt
 	
 end
 
