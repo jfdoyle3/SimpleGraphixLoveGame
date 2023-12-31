@@ -53,8 +53,8 @@ function love.load()
 
 -- Buttons
 
-	buttonUp=Button.new("UP",200,300,200,100,false)
-	buttonDown=Button.new("Down",475,300,200,100,false)
+	buttonA=Button.new("UP",200,300,100,100,false)
+	buttonD=Button.new("Down",475,300,200,100,false)
 	buttonLeft=Button.new("Left",200,300,200,100,false)
 	buttonRight=Button.new("Right",475,300,200,100,false)
 	
@@ -81,12 +81,39 @@ end
            Mouse Press / Screen Tap
 	]]
 function love.mousepressed(x, y)
-
+	if x > buttonA.posX and x < buttonA.posX+buttonA.sizeX and 
+       y > buttonA.posY and y < buttonA.posY+buttonA.sizeY then
+		buttonA.state = true
+		round=round+1
+	elseif x > buttonD.posX and x < buttonD.posX+buttonD.sizeX and 
+           y > buttonD.posY and y < buttonD.posY+buttonD.sizeY then
+		buttonD.state = true
+		round=round+1
+	end
 
 end
 
 function love.update(dt)
-	buttonUp.posX=buttonUp.posX+10*dt
+	if buttonA.state and npcAction%2 == 1 then
+	    npcMiss=npcMiss+1 -- Player Attack -> NPC Defend
+		buttonA.state = false
+		npcAction = math.random(10)
+	elseif buttonD.state and npcAction%2 == 0 then
+		npcScore = npcScore + 1 -- Player Defend -> NPC Attack
+		buttonD.state = false
+		npcAction = math.random(10)
+	end
+	
+	if buttonA.state and npcAction%2 == 0 then
+		playerScore = playerScore+1 -- Player Attack -> NPC Attack       
+		buttonA.state = false
+		npcAction = math.random(10)
+	elseif buttonD.state and npcAction%2 == 1 then
+		playerMiss=playerMiss+1  -- Player Defend -> NPC Defend
+		buttonD.state = false
+		npcAction = math.random(10)
+	end
+	-- buttonA.posX=buttonA.posX+10*dt
 	
 end
 
@@ -95,17 +122,17 @@ end
 ]]
 function love.draw()
 -- Button Layer
-	love.graphics.rectangle("line",0,0,800,600)
+	love.graphics.rectangle("line",0,0,800,300)
 -- Attack Button
 	love.graphics.setColor(0,255,0)
-	love.graphics.rectangle("fill",buttonUp.posX,buttonUp.posY,buttonUp.sizeX,buttonUp.sizeY)
+	love.graphics.rectangle("fill",buttonA.posX,buttonA.posY,buttonA.sizeX,buttonA.sizeY)
 	love.graphics.setColor(255,255,255)
 
--- Defend Button
+--[[ Defend Button
 	love.graphics.setColor(255,0,0)
 	love.graphics.rectangle("fill",buttonRight.posX,buttonRight.posY,buttonRight.sizeX,buttonRight.sizeY)
 	love.graphics.setColor(255,255,255)
-
+]]
 end
 
 
