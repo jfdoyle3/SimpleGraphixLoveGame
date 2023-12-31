@@ -1,5 +1,5 @@
 --[[
-      Simple Love Game
+      Simple Graphix Love Game
 		Main Game Loop
 	The game will continuously
 	run these three functions until the
