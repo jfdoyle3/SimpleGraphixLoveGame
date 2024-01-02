@@ -53,10 +53,10 @@ function love.load()
 
 -- Buttons
 
-	buttonUp=Button.new("UP",100,300,50,50,false)
-	buttonDown=Button.new("Down",100,400,50,50,false)
-	buttonLeft=Button.new("Left",50,350,50,50,false)
-	buttonRight=Button.new("Right",150,350,50,50,false)
+	buttonUp=Button.new("UP",100,200,50,50,false)
+	buttonDown=Button.new("Down",100,300,50,50,false)
+	buttonLeft=Button.new("Left",50,250,50,50,false)
+	buttonRight=Button.new("Right",150,250,50,50,false)
 	
 
 
@@ -122,7 +122,7 @@ end
 ]]
 function love.draw()
 -- Button Layer
-	love.graphics.rectangle("line",0,0,800,300)
+	love.graphics.rectangle("line",0,0,800,200)
 -- Attack Button
 	love.graphics.setColor(0,255,0)
 	love.graphics.rectangle("fill",buttonUp.posX,buttonUp.posY,buttonUp.sizeX,buttonUp.sizeY)
