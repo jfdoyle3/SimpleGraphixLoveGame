@@ -5,7 +5,7 @@
 Player={}
 Player.__index=Player
 
-function Player.new(name,life,attack,defend,str,dex)
+function Player.new(name,life,attack,defend,str,dex,state)
 	local self=setmetatable({},Player)
 	self.name=name or "Hero"
 	self.life = life or 10
@@ -13,5 +13,7 @@ function Player.new(name,life,attack,defend,str,dex)
 	self.defend = defend or 10
 	self.str = str or 10
 	self.dex = dex or 10
+	self.state=state or false
 	return self
 end
+

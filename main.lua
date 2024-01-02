@@ -24,6 +24,16 @@ function love.load()
 --love.keyboard.setTextInput(enable)
 
 
+-- Playing Field - Adnroid Pixel 4a
+playingFieldXOffset=5
+playingFieldYOffset=30
+playingFieldXSize=825
+playingFieldYSize=200
+
+
+
+
+
 math.randomseed(os.time())
 npcAction = math.random(10)
 
@@ -54,16 +64,26 @@ acionLog = {}
 
 
 -- Buttons
-
+-- Joystick
 buttonUp = Button.new("UP",100,230,50,50,false)
 buttonDown = Button.new("Down",100,330,50,50,false)
 buttonLeft = Button.new("Left",50,280,50,50,false)
 buttonRight = Button.new("Right",150,280,50,50,false)
+--
+buttonAttack=Button.new("Attack",300,280,100,50,false)
+buttonDefend=Button.new("Defend",500,280,100,50,false)
 
+--
 
 
 -- Player
-player = Player.new()
+-- player = Player.new()
+playerCharGraphic={}
+playerCharGraphic.posX=10+playingFieldXOffset
+playerCharGraphic.posY=10+playingFieldYOffset
+playerCharGraphic.sizeX=10
+playerCharGraphic.sizeY=10
+playerCharGraphic.speed=50
 
 -- NPC
 npc = Npc.new()
@@ -71,10 +91,10 @@ npc = Npc.new()
 --[[	Object test console output
 	print(buttonUp.title,buttonUp.posX,buttonUp.posY,buttonUp.sizeX,buttonUp.sizeY,buttonUp.state)
 	print(buttonDown.title)
-	print(player.name,player.life,player.attack,player.defend,player.str,player.dex)
+	print(player.name,player.life,player.attack,player.defend,player.str,player.dex,player.state)
 	print(npc.name,npc.life,npc.attack,npc.defend,npc.str,npc.dex,npc.friend)
 ]]
-
+	
 
 
 end
@@ -83,36 +103,44 @@ end
 	]]
 function love.mousepressed(x, y)
 if x > buttonUp.posX and x < buttonUp.posX+buttonUp.sizeX and
-y > buttonUp.posY and y < buttonUp.posY+buttonUp.sizeY then
-buttonUp.state = true
-round = round+1
+	y > buttonUp.posY and y < buttonUp.posY+buttonUp.sizeY then
+	buttonUp.state = true
+
 elseif x > buttonDown.posX and x < buttonDown.posX+buttonDown.sizeX and
-y > buttonDown.posY and y < buttonDown.posY+buttonDown.sizeY then
-buttonDown.state = true
-round = round+1
+	y > buttonDown.posY and y < buttonDown.posY+buttonDown.sizeY then
+	buttonDown.state = true
+
+elseif x > buttonLeft.posX and x < buttonLeft.posX+buttonLeft.sizeX and
+	y > buttonLeft.posY and y < buttonLeft.posY+buttonLeft.sizeY then
+	buttonLeft.state = true
+
+elseif x > buttonRight.posX and x < buttonRight.posX+buttonRight.sizeX and
+	y > buttonRight.posY and y < buttonRight.posY+buttonRight.sizeY then
+	buttonRight.state = true
+	
 end
 
 end
 
+
+--  This is where things move
 function love.update(dt)
-if buttonUp.state and npcAction%2 == 1 then
-npcMiss = npcMiss+1 -- Player Attack -> NPC Defend
-buttonUp.state = false
-npcAction = math.random(10)
-elseif buttonDown.state and npcAction%2 == 0 then
-npcScore = npcScore + 1 -- Player Defend -> NPC Attack
-buttonDown.state = false
-npcAction = math.random(10)
-end
+if buttonUp.state then 
+	playerCharGraphic.posY=playerCharGraphic.posY-playerCharGraphic.speed*dt
+	buttonUp.state = false
+	
+elseif buttonDown.state then
+	playerCharGraphic.posY=playerCharGraphic.posY+playerCharGraphic.speed*dt
+	buttonDown.state = false
+	
+elseif buttonLeft.state then
+	playerCharGraphic.posX=playerCharGraphic.posX-playerCharGraphic.speed*dt
+	buttonLeft.state = false
 
-if buttonUp.state and npcAction%2 == 0 then
-playerScore = playerScore+1 -- Player Attack -> NPC Attack
-buttonUp.state = false
-npcAction = math.random(10)
-elseif buttonDown.state and npcAction%2 == 1 then
-playerMiss = playerMiss+1 -- Player Defend -> NPC Defend
-buttonDown.state = false
-npcAction = math.random(10)
+elseif buttonRight.state then
+	playerCharGraphic.posX=playerCharGraphic.posX+playerCharGraphic.speed*dt
+	buttonRight.state = false
+
 end
 -- buttonUp.posX=buttonUp.posX+10*dt
 
@@ -122,16 +150,24 @@ end
 	Draw
 ]]
 function love.draw()
+-- Playing Field - Android Pixel 4a
+love.graphics.rectangle("line",playingFieldXOffset,playingFieldYOffset,playingFieldXSize,playingFieldYSize)
 -- Button Layer
-love.graphics.rectangle("line",5,30,825,200)
--- Attack Button
+
+-- Joystick Diplay
 love.graphics.setColor(0,255,0)
 love.graphics.rectangle("fill",buttonUp.posX,buttonUp.posY,buttonUp.sizeX,buttonUp.sizeY)
 love.graphics.rectangle("fill",buttonDown.posX,buttonDown.posY,buttonDown.sizeX,buttonDown.sizeY)
 love.graphics.rectangle("fill",buttonLeft.posX,buttonLeft.posY,buttonLeft.sizeX,buttonLeft.sizeY)
 love.graphics.rectangle("fill",buttonRight.posX,buttonRight.posY,buttonRight.sizeX,buttonRight.sizeY)
+--
+-- Attack / Defend
+love.graphics.rectangle("fill",buttonAttack.posX,buttonAttack.posY,buttonAttack.sizeX,buttonAttack.sizeY)
+love.graphics.rectangle("fill",buttonDefend.posX,buttonDefend.posY,buttonDefend.sizeX,buttonDefend.sizeY)
 love.graphics.setColor(255,255,255)
 
+-- Player on Playing Field
+love.graphics.rectangle("fill",playerCharGraphic.posX+playingFieldXOffset,playerCharGraphic.posY+playingFieldYOffset,playerCharGraphic.sizeX,playerCharGraphic.sizeY)
 --[[ Defend Button
 	love.graphics.setColor(255,0,0)
 	love.graphics.rectangle("fill",buttonRight.posX,buttonRight.posY,buttonRight.sizeX,buttonRight.sizeY)

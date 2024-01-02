@@ -14,6 +14,6 @@ function Button.new(title,posX,posY,sizeX,sizeY,state)
 		self.sizeY=sizeY
 		self.posX=posX
 		self.posY=posY
-		self.state = statereturn or false
+		self.state = state or false
 	return self
 end
