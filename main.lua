@@ -150,12 +150,22 @@ end
 	Draw
 ]]
 function love.draw()
+-- Color
+	love.graphics.setColor(0,255,0)
+
 -- Playing Field - Android Pixel 4a
 love.graphics.rectangle("line",playingFieldXOffset,playingFieldYOffset,playingFieldXSize,playingFieldYSize)
 -- Button Layer
 
 -- Joystick Diplay
-love.graphics.setColor(250,255,200)
+--[[
+	Looking to make a button turn red when touched.
+if buttonUp then
+	love.graphics.setColor(255,0,0)
+	love.graphics.rectangle("fill",buttonUp.posX,buttonUp.posY,buttonUp.sizeX,buttonUp.sizeY)
+	love.graphics.setColor(0,255,0)
+end
+]]
 love.graphics.rectangle("fill",buttonUp.posX,buttonUp.posY,buttonUp.sizeX,buttonUp.sizeY)
 love.graphics.rectangle("fill",buttonDown.posX,buttonDown.posY,buttonDown.sizeX,buttonDown.sizeY)
 love.graphics.rectangle("fill",buttonLeft.posX,buttonLeft.posY,buttonLeft.sizeX,buttonLeft.sizeY)
