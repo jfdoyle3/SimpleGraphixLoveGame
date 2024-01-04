@@ -30,7 +30,13 @@ playingFieldYOffset=30
 playingFieldXSize=825
 playingFieldYSize=200
 
-
+playingfield={}
+for row=playingFieldXOffset, playingFieldXSize do
+	playingfield[row]={}
+	for col=playingFieldYOffset, playingFieldYSize do
+		playingfield[row][col]=0
+	end
+end
 
 
 
@@ -160,15 +166,7 @@ love.graphics.rectangle("line",playingFieldXOffset,playingFieldYOffset,playingFi
 -- Joystick Diplay
 
 --	Looking to make a button turn red when touched.
-if buttonUp==true then
-	love.graphics.setColor(255,0,0)
-	love.graphics.rectangle("fill",buttonUp.posX,buttonUp.posY,buttonUp.sizeX,buttonUp.sizeY)
-	love.graphics.setColor(0,255,0)
-elseif buttonUp~=true then
-	love.graphics.setColor(0,255,0)
-	love.graphics.rectangle("fill",buttonUp.posX,buttonUp.posY,buttonUp.sizeX,buttonUp.sizeY)
-	love.graphics.setColor(0,255,0)
-end
+love.graphics.rectangle("fill",buttonUp.posX,buttonUp.posY,buttonUp.sizeX,buttonUp.sizeY)
 love.graphics.rectangle("fill",buttonDown.posX,buttonDown.posY,buttonDown.sizeX,buttonDown.sizeY)
 love.graphics.rectangle("fill",buttonLeft.posX,buttonLeft.posY,buttonLeft.sizeX,buttonLeft.sizeY)
 love.graphics.rectangle("fill",buttonRight.posX,buttonRight.posY,buttonRight.sizeX,buttonRight.sizeY)
