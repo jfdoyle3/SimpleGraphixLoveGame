@@ -158,15 +158,17 @@ love.graphics.rectangle("line",playingFieldXOffset,playingFieldYOffset,playingFi
 -- Button Layer
 
 -- Joystick Diplay
---[[
-	Looking to make a button turn red when touched.
-if buttonUp then
+
+--	Looking to make a button turn red when touched.
+if buttonUp==true then
 	love.graphics.setColor(255,0,0)
 	love.graphics.rectangle("fill",buttonUp.posX,buttonUp.posY,buttonUp.sizeX,buttonUp.sizeY)
 	love.graphics.setColor(0,255,0)
+elseif buttonUp~=true then
+	love.graphics.setColor(0,255,0)
+	love.graphics.rectangle("fill",buttonUp.posX,buttonUp.posY,buttonUp.sizeX,buttonUp.sizeY)
+	love.graphics.setColor(0,255,0)
 end
-]]
-love.graphics.rectangle("fill",buttonUp.posX,buttonUp.posY,buttonUp.sizeX,buttonUp.sizeY)
 love.graphics.rectangle("fill",buttonDown.posX,buttonDown.posY,buttonDown.sizeX,buttonDown.sizeY)
 love.graphics.rectangle("fill",buttonLeft.posX,buttonLeft.posY,buttonLeft.sizeX,buttonLeft.sizeY)
 love.graphics.rectangle("fill",buttonRight.posX,buttonRight.posY,buttonRight.sizeX,buttonRight.sizeY)
