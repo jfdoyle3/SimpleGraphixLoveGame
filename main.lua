@@ -91,6 +91,9 @@ playerCharGraphic.sizeX=10
 playerCharGraphic.sizeY=10
 playerCharGraphic.speed=50
 
+-- place player on playingfield
+playingfield[playerCharGraphic.posX][playerCharGraphic.posY]=1
+
 -- NPC
 npc = Npc.new()
 
@@ -100,6 +103,11 @@ npc = Npc.new()
 	print(player.name,player.life,player.attack,player.defend,player.str,player.dex,player.state)
 	print(npc.name,npc.life,npc.attack,npc.defend,npc.str,npc.dex,npc.friend)
 ]]
+for row=playingFieldXOffset, playingFieldXSize do
+	for col=playingFieldYOffset, playingFieldYSize do
+		print(playingfield[row][col])
+	end
+end
 	
 
 
