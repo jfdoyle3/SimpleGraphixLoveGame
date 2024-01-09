@@ -27,8 +27,8 @@ function love.load()
 -- Playing Field - Adnroid Pixel 4a
 playingFieldXOffset=5
 playingFieldYOffset=30
-playingFieldXSize=825
-playingFieldYSize=200
+playingFieldXSize=300
+playingFieldYSize=300
 
 playingfield={}
 for row=playingFieldXOffset, playingFieldXSize do
@@ -87,8 +87,8 @@ buttonDefend=Button.new("Defend",500,280,100,50,false)
 playerCharGraphic={}
 playerCharGraphic.posX=10+playingFieldXOffset
 playerCharGraphic.posY=10+playingFieldYOffset
-playerCharGraphic.sizeX=10
-playerCharGraphic.sizeY=10
+playerCharGraphic.sizeX=50
+playerCharGraphic.sizeY=50
 playerCharGraphic.speed=50
 
 -- NPC
