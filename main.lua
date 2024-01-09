@@ -25,7 +25,8 @@ function love.load()
 
 
 -- Playing Field - Adnroid Pixel 4a
-playingFieldXOffset=5
+-- Offsets are 0,0
+playingFieldXOffset=5  
 playingFieldYOffset=30
 playingFieldXSize=300
 playingFieldYSize=300
@@ -85,10 +86,10 @@ buttonDefend=Button.new("Defend",500,280,100,50,false)
 -- Player
 -- player = Player.new()
 playerCharGraphic={}
-playerCharGraphic.posX=10+playingFieldXOffset
-playerCharGraphic.posY=10+playingFieldYOffset
-playerCharGraphic.sizeX=50
-playerCharGraphic.sizeY=50
+playerCharGraphic.posX=playingFieldXOffset
+playerCharGraphic.posY=playingFieldYOffset
+playerCharGraphic.sizeX=100
+playerCharGraphic.sizeY=100
 playerCharGraphic.speed=50
 
 -- place player on playingfield
@@ -103,11 +104,10 @@ npc = Npc.new()
 	print(player.name,player.life,player.attack,player.defend,player.str,player.dex,player.state)
 	print(npc.name,npc.life,npc.attack,npc.defend,npc.str,npc.dex,npc.friend)
 ]]
-for row=playingFieldXOffset, playingFieldXSize do
-	for col=playingFieldYOffset, playingFieldYSize do
-		print(playingfield[row][col])
-	end
-end
+
+
+
+
 	
 
 
