@@ -50,9 +50,9 @@ treasure=tokens[5]
 	place player
 ]]
 playerX,playerY=randomPostions()
-board[playerX][playerX]=player
+board[playerX][playerY]=player
 treeX,treeY=randomPostions()
-board[treeX][treeX]=tree
+board[treeX][treeY]=tree
 
 print("p: "..playerX..","..playerY)
 print("t: "..treeX..","..treeY)
