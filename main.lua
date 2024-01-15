@@ -25,19 +25,12 @@ function love.load()
 
 
 -- Playing Field - Adnroid Pixel 4a
--- Offsets are 0,0
-playingFieldXOffset=5  
-playingFieldYOffset=30
-playingFieldXSize=300
-playingFieldYSize=300
+playingFieldXOffset = 5
+playingFieldYOffset = 30
+playingFieldXSize = 100
+playingFieldYSize = 100
 
-playingfield={}
-for row=playingFieldXOffset, playingFieldXSize do
-	playingfield[row]={}
-	for col=playingFieldYOffset, playingFieldYSize do
-		playingfield[row][col]=0
-	end
-end
+
 
 
 
@@ -77,23 +70,20 @@ buttonDown = Button.new("Down",100,330,50,50,false)
 buttonLeft = Button.new("Left",50,280,50,50,false)
 buttonRight = Button.new("Right",150,280,50,50,false)
 --
-buttonAttack=Button.new("Attack",300,280,100,50,false)
-buttonDefend=Button.new("Defend",500,280,100,50,false)
+buttonAttack = Button.new("Attack",300,280,100,50,false)
+buttonDefend = Button.new("Defend",500,280,100,50,false)
 
 --
 
 
 -- Player
 -- player = Player.new()
-playerCharGraphic={}
-playerCharGraphic.posX=playingFieldXOffset
-playerCharGraphic.posY=playingFieldYOffset
-playerCharGraphic.sizeX=100
-playerCharGraphic.sizeY=100
-playerCharGraphic.speed=50
-
--- place player on playingfield
-playingfield[playerCharGraphic.posX][playerCharGraphic.posY]=1
+playerCharGraphic = {}
+playerCharGraphic.posX = 10+playingFieldXOffset
+playerCharGraphic.posY = 10+playingFieldYOffset
+playerCharGraphic.sizeX = 10
+playerCharGraphic.sizeY = 10
+playerCharGraphic.speed = 100
 
 -- NPC
 npc = Npc.new()
@@ -107,31 +97,27 @@ npc = Npc.new()
 
 
 
-
-	
-
-
 end
 --[[
            Mouse Press / Screen Tap
 	]]
 function love.mousepressed(x, y)
 if x > buttonUp.posX and x < buttonUp.posX+buttonUp.sizeX and
-	y > buttonUp.posY and y < buttonUp.posY+buttonUp.sizeY then
-	buttonUp.state = true
+y > buttonUp.posY and y < buttonUp.posY+buttonUp.sizeY then
+buttonUp.state = true
 
 elseif x > buttonDown.posX and x < buttonDown.posX+buttonDown.sizeX and
-	y > buttonDown.posY and y < buttonDown.posY+buttonDown.sizeY then
-	buttonDown.state = true
+y > buttonDown.posY and y < buttonDown.posY+buttonDown.sizeY then
+buttonDown.state = true
 
 elseif x > buttonLeft.posX and x < buttonLeft.posX+buttonLeft.sizeX and
-	y > buttonLeft.posY and y < buttonLeft.posY+buttonLeft.sizeY then
-	buttonLeft.state = true
+y > buttonLeft.posY and y < buttonLeft.posY+buttonLeft.sizeY then
+buttonLeft.state = true
 
 elseif x > buttonRight.posX and x < buttonRight.posX+buttonRight.sizeX and
-	y > buttonRight.posY and y < buttonRight.posY+buttonRight.sizeY then
-	buttonRight.state = true
-	
+y > buttonRight.posY and y < buttonRight.posY+buttonRight.sizeY then
+buttonRight.state = true
+
 end
 
 end
@@ -139,21 +125,21 @@ end
 
 --  This is where things move
 function love.update(dt)
-if buttonUp.state then 
-	playerCharGraphic.posY=playerCharGraphic.posY-playerCharGraphic.speed*dt
-	buttonUp.state = false
-	
+if buttonUp.state and playerCharGraphic.posY < playingFieldYOffset then
+playerCharGraphic.posY = playerCharGraphic.posY-playerCharGraphic.speed*dt
+buttonUp.state = false
+
 elseif buttonDown.state then
-	playerCharGraphic.posY=playerCharGraphic.posY+playerCharGraphic.speed*dt
-	buttonDown.state = false
-	
+playerCharGraphic.posY = playerCharGraphic.posY+playerCharGraphic.speed*dt
+buttonDown.state = false
+
 elseif buttonLeft.state then
-	playerCharGraphic.posX=playerCharGraphic.posX-playerCharGraphic.speed*dt
-	buttonLeft.state = false
+playerCharGraphic.posX = playerCharGraphic.posX-playerCharGraphic.speed*dt
+buttonLeft.state = false
 
 elseif buttonRight.state then
-	playerCharGraphic.posX=playerCharGraphic.posX+playerCharGraphic.speed*dt
-	buttonRight.state = false
+playerCharGraphic.posX = playerCharGraphic.posX+playerCharGraphic.speed*dt
+buttonRight.state = false
 
 end
 -- buttonUp.posX=buttonUp.posX+10*dt
@@ -164,16 +150,14 @@ end
 	Draw
 ]]
 function love.draw()
--- Color
-	love.graphics.setColor(0,255,0)
-
+  
+  love.graphics.print("pX: ",200,50)
 -- Playing Field - Android Pixel 4a
 love.graphics.rectangle("line",playingFieldXOffset,playingFieldYOffset,playingFieldXSize,playingFieldYSize)
 -- Button Layer
 
 -- Joystick Diplay
-
---	Looking to make a button turn red when touched.
+love.graphics.setColor(250,255,200)
 love.graphics.rectangle("fill",buttonUp.posX,buttonUp.posY,buttonUp.sizeX,buttonUp.sizeY)
 love.graphics.rectangle("fill",buttonDown.posX,buttonDown.posY,buttonDown.sizeX,buttonDown.sizeY)
 love.graphics.rectangle("fill",buttonLeft.posX,buttonLeft.posY,buttonLeft.sizeX,buttonLeft.sizeY)
