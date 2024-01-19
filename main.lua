@@ -101,6 +101,7 @@ function love.load()
 	collisionBox.sizeX = 5
 	collisionBox.sizeY = 5
 	collisionBox.playerMid=5
+	collisionBox.collided=false
 
 
 --[[	Object test console output
@@ -158,7 +159,9 @@ function love.update(dt)
 
 	end
 -- buttonUp.posX=buttonUp.posX+10*dt
-
+	if playerCharGraphic.posX==collisionBox.posX then
+		collisionBox.collided=true
+	end
 end
 
 --[[
@@ -169,7 +172,9 @@ function love.draw()
 	love.graphics.print("pX: "..playerCharGraphic.posX,200,50)
 	love.graphics.print("pY: "..playerCharGraphic.posY,200,65)
 	love.graphics.print("npc: "..npcCharGraphic.posX..","..npcCharGraphic.posY,200,100)
-
+	if collisionBox.collided then
+		love.graphics.print("Hit!!!",250, 100)
+    end
 	love.graphics.circle("fill",npcCharGraphic.posX,npcCharGraphic.posY,npcCharGraphic.sizeX)
 -- Playing Field - Android Pixel 4a
 	love.graphics.rectangle("line",playingFieldXOffset,playingFieldYOffset,playingFieldXSize,playingFieldYSize)
