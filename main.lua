@@ -100,6 +100,7 @@ function love.load()
 	collisionBox.posY = 80+playingFieldYOffset
 	collisionBox.sizeX = 5
 	collisionBox.sizeY = 5
+	collisionBox.playerMid=5
 
 
 --[[	Object test console output
