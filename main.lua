@@ -163,7 +163,7 @@ function love.update(dt)
 		collisionBox.collided=true
 	end
 end
-
+--	print("up: "..collisionBox.collided)
 --[[
 	Draw
 ]]
@@ -173,6 +173,7 @@ function love.draw()
 	love.graphics.print("pY: "..playerCharGraphic.posY,200,65)
 	love.graphics.print("npc: "..npcCharGraphic.posX..","..npcCharGraphic.posY,200,100)
 	if collisionBox.collided then
+	--	print("draw: "..collisionBox.collided)
 		love.graphics.print("Hit!!!",250, 100)
     end
 	love.graphics.circle("fill",npcCharGraphic.posX,npcCharGraphic.posY,npcCharGraphic.sizeX)
