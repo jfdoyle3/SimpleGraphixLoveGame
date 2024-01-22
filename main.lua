@@ -159,7 +159,7 @@ function love.update(dt)
 
 	end
 -- buttonUp.posX=buttonUp.posX+10*dt
-	if playerCharGraphic.posX==collisionBox.posX then
+	if playerCharGraphic.posX==collisionBox.posX and playerCharGraphic.posY==collisionBox.posY then
 		collisionBox.collided=true
 	end
 end
