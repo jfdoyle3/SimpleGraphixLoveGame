@@ -177,7 +177,13 @@ function love.draw()
 		print("draw: "..collisionBox.collided)
 		love.graphics.print("Hit!!!",250, 100)
     end
-	love.graphics.circle("fill",npcCharGraphic.posX,npcCharGraphic.posY,npcCharGraphic.sizeX)
+	if !collisionBox then
+		love.graphics.setColor(255,255,255)
+		love.graphics.circle("fill",npcCharGraphic.posX,npcCharGraphic.posY,npcCharGraphic.sizeX)
+	elseif collisionBox then
+		love.graphics.setColor(0,0,0)
+		love.graphics.circle("fill",npcCharGraphic.posX,npcCharGraphic.posY,npcCharGraphic.sizeX)
+	end
 -- Playing Field - Android Pixel 4a
 	love.graphics.rectangle("line",playingFieldXOffset,playingFieldYOffset,playingFieldXSize,playingFieldYSize)
 -- Button Layer
