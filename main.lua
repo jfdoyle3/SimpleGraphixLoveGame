@@ -135,7 +135,11 @@ function love.mousepressed(x, y)
 		buttonRight.state = true
 	end
 	
-
+	if buttonAttack then
+		buttonAttack=true
+	end
+	if buttonDefend then
+		buttonDefend=true
 
 end
 
@@ -165,7 +169,8 @@ end
 -- buttonUp.posX=buttonUp.posX+10*dt
 
 end
---	print("up: "..collisionBox.collided)
+	print("attack: "..buttonAttack)
+	print("defend: "..buttonDefend)
 --[[
 	Draw
 ]]
