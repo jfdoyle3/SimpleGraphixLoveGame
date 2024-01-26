@@ -135,9 +135,7 @@ function love.mousepressed(x, y)
 		buttonRight.state = true
 	end
 	
-	if playerCharGraphic.posX>collisionBox.posX and playerCharGraphic.posY<collisionBox.posY then
-		collisionBox.collided=true
-	end
+
 
 end
 
@@ -160,6 +158,9 @@ function love.update(dt)
 		playerCharGraphic.posX = playerCharGraphic.posX+playerCharGraphic.speed*dt
 		buttonRight.state = false
 
+end
+	if playerCharGraphic.posX>collisionBox.posX and playerCharGraphic.posY<collisionBox.posY then
+		collisionBox.collided=true
 	end
 -- buttonUp.posX=buttonUp.posX+10*dt
 
