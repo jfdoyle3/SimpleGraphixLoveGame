@@ -183,10 +183,10 @@ function love.draw()
 		print("draw: "..collisionBox.collided)
 		love.graphics.print("Hit!!!",250, 100)
     end
-	if !collisionBox then
+	if !attackButton then
 		love.graphics.setColor(255,255,255)
 		love.graphics.circle("fill",npcCharGraphic.posX,npcCharGraphic.posY,npcCharGraphic.sizeX)
-	elseif collisionBox then
+	elseif attackButton then
 		love.graphics.setColor(0,0,0)
 		love.graphics.circle("fill",npcCharGraphic.posX,npcCharGraphic.posY,npcCharGraphic.sizeX)
 	end
