@@ -183,6 +183,8 @@ function love.draw()
 		print("draw: "..collisionBox.collided)
 		love.graphics.print("Hit!!!",250, 100)
     end
+	
+	-- This should turn the circle/npc black and white to appear blink when pushing the button
 	if !attackButton then
 		love.graphics.setColor(255,255,255)
 		love.graphics.circle("fill",npcCharGraphic.posX,npcCharGraphic.posY,npcCharGraphic.sizeX)
