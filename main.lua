@@ -137,10 +137,9 @@ function love.mousepressed(x, y)
 	
 	if buttonAttack then
 		buttonAttack=true
-	end
-	if buttonDefend then
+	endif buttonDefend then
 		buttonDefend=true
-
+	end
 end
 
 
