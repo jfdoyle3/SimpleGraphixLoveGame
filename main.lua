@@ -147,19 +147,19 @@ end
 function love.update(dt)
 	if buttonUp.state then
 		playerCharGraphic.posY = playerCharGraphic.posY-playerCharGraphic.speed*dt
-		buttonUp.state = false
+	--	buttonUp.state = false
 
 	elseif buttonDown.state then
 		playerCharGraphic.posY = playerCharGraphic.posY+playerCharGraphic.speed*dt
-		buttonDown.state = false
+	--	buttonDown.state = false
 
 	elseif buttonLeft.state then
 		playerCharGraphic.posX = playerCharGraphic.posX-playerCharGraphic.speed*dt
-		buttonLeft.state = false
+	--	buttonLeft.state = false
 
 	elseif buttonRight.state then
 		playerCharGraphic.posX = playerCharGraphic.posX+playerCharGraphic.speed*dt
-		buttonRight.state = false
+	--	buttonRight.state = false
 
 end
 	if playerCharGraphic.posX>collisionBox.posX and playerCharGraphic.posY<collisionBox.posY then
