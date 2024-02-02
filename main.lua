@@ -135,9 +135,9 @@ function love.mousepressed(x, y)
 		buttonRight.state = true
 	end
 	
-	if buttonAttack then
+	if buttonAttack.state then
 		buttonAttack=true
-	endif buttonDefend then
+	elseif buttonDefend.state then
 		buttonDefend=true
 	end
 end
@@ -147,19 +147,19 @@ end
 function love.update(dt)
 	if buttonUp.state then
 		playerCharGraphic.posY = playerCharGraphic.posY-playerCharGraphic.speed*dt
-	--	buttonUp.state = false
+		buttonUp.state = false
 
 	elseif buttonDown.state then
 		playerCharGraphic.posY = playerCharGraphic.posY+playerCharGraphic.speed*dt
-	--	buttonDown.state = false
+		buttonDown.state = false
 
 	elseif buttonLeft.state then
 		playerCharGraphic.posX = playerCharGraphic.posX-playerCharGraphic.speed*dt
-	--	buttonLeft.state = false
+		buttonLeft.state = false
 
 	elseif buttonRight.state then
 		playerCharGraphic.posX = playerCharGraphic.posX+playerCharGraphic.speed*dt
-	--	buttonRight.state = false
+		buttonRight.state = false
 
 end
 	if playerCharGraphic.posX>collisionBox.posX and playerCharGraphic.posY<collisionBox.posY then
@@ -168,8 +168,7 @@ end
 -- buttonUp.posX=buttonUp.posX+10*dt
 
 end
-	print("attack: "..buttonAttack)
-	print("defend: "..buttonDefend)
+
 --[[
 	Draw
 ]]
@@ -178,7 +177,7 @@ function love.draw()
 	love.graphics.print("pX: "..playerCharGraphic.posX,200,50)
 	love.graphics.print("pY: "..playerCharGraphic.posY,200,65)
 	love.graphics.print("npc: "..npcCharGraphic.posX..","..npcCharGraphic.posY,200,100)
-	love.graphics.print("Score: " .. score,200,175)
+	love.graphics.print("Player Score: " .. playerScore,200,175)
 	if collisionBox.collided then
 		print("draw: "..collisionBox.collided)
 		score=score+1
@@ -187,17 +186,18 @@ function love.draw()
     end
 	
 	-- This should turn the circle/npc black and white to appear blink when pushing the button
-	if !attackButton then
+	if not (buttonAttack.state) then
 		love.graphics.setColor(255,255,255)
 		love.graphics.circle("fill",npcCharGraphic.posX,npcCharGraphic.posY,npcCharGraphic.sizeX)
-	elseif attackButton then
+	elseif buttonAttack.state then
 		love.graphics.setColor(0,0,0)
 		love.graphics.circle("fill",npcCharGraphic.posX,npcCharGraphic.posY,npcCharGraphic.sizeX)
 	end
 -- Playing Field - Android Pixel 4a
 	love.graphics.rectangle("line",playingFieldXOffset,playingFieldYOffset,playingFieldXSize,playingFieldYSize)
 -- Button Layer
-
+	print("attack: "..tostring(buttonAttack.state))
+	print("defend: "..tostring(buttonDefend.state))
 -- Joystick Diplay
 	love.graphics.setColor(250,255,200)
 	love.graphics.rectangle("fill",buttonUp.posX,buttonUp.posY,buttonUp.sizeX,buttonUp.sizeY)
@@ -217,5 +217,13 @@ function love.draw()
 	love.graphics.setColor(255,0,0)
 	love.graphics.rectangle("fill",buttonRight.posX,buttonRight.posY,buttonRight.sizeX,buttonRight.sizeY)
 	love.graphics.setColor(255,255,255)
-]]
+	]]
+	
+		love.graphics.setColor(255,255,255)
+		love.graphics.circle("fill",50,5,npcCharGraphic.sizeX)
+		love.graphics.setColor(0,0,0)
+		love.graphics.circle("fill",50,5,npcCharGraphic.sizeX)
+	
+	
+
 end
