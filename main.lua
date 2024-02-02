@@ -179,7 +179,7 @@ function love.draw()
 	love.graphics.print("npc: "..npcCharGraphic.posX..","..npcCharGraphic.posY,200,100)
 	love.graphics.print("Player Score: " .. playerScore,200,175)
 	if collisionBox.collided then
-		print("draw: "..collisionBox.collided)
+		print("draw: "..tostring(collisionBox.collided))
 		score=score+1
 		print("score: ".. score)
 		love.graphics.print("Hit!!!",250, 100)
@@ -196,8 +196,8 @@ function love.draw()
 -- Playing Field - Android Pixel 4a
 	love.graphics.rectangle("line",playingFieldXOffset,playingFieldYOffset,playingFieldXSize,playingFieldYSize)
 -- Button Layer
-	print("attack: "..tostring(buttonAttack.state))
-	print("defend: "..tostring(buttonDefend.state))
+--	print("attack: "..tostring(buttonAttack.state))
+--	print("defend: "..tostring(buttonDefend.state))
 -- Joystick Diplay
 	love.graphics.setColor(250,255,200)
 	love.graphics.rectangle("fill",buttonUp.posX,buttonUp.posY,buttonUp.sizeX,buttonUp.sizeY)
