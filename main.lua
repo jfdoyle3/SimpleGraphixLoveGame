@@ -7,7 +7,7 @@
 	run order:
 		Load / Update / Draw
 ]]
-
+require("library.classic")
 require("objects.button")
 require("objects.player")
 require("objects.npc")
