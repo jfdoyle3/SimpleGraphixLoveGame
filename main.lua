@@ -104,12 +104,7 @@ function love.load()
 	collisionBox.collided=false
 
 
---[[	Object test console output
-	print(buttonUp.title,buttonUp.posX,buttonUp.posY,buttonUp.sizeX,buttonUp.sizeY,buttonUp.state)
-	print(buttonDown.title)
-	print(player.name,player.life,player.attack,player.defend,player.str,player.dex,player.state)
-	print(npc.name,npc.life,npc.attack,npc.defend,npc.str,npc.dex,npc.friend)
-]]
+
 
 
 
