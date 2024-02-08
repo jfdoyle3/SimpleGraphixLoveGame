@@ -7,10 +7,7 @@
 	run order:
 		Load / Update / Draw
 ]]
-require("library.classic")
-require("objects.button")
-require("objects.player")
-require("objects.npc")
+
 
 function love.load()
 --[[
@@ -22,7 +19,13 @@ function love.load()
 		just enabling it may be fine.
 	]]
 --love.keyboard.setTextInput(enable)
-
+	Object=require "library.classic"
+	require "objects.button"
+	require "objects.player"
+	require "objects.npc"
+	
+	player=Player()
+	npc=Npc()
 
 -- Playing Field - Adnroid Pixel 4a
 	playingFieldXOffset = 5
@@ -76,7 +79,7 @@ function love.load()
 --
 
 
--- Player
+--[[ Player
 -- player = Player.new()
 	playerCharGraphic = {}
 	playerCharGraphic.posX = 0+playingFieldXOffset
@@ -103,7 +106,7 @@ function love.load()
 	collisionBox.playerMid=5
 	collisionBox.collided=false
 
-
+]]
 
 
 
@@ -129,7 +132,7 @@ function love.mousepressed(x, y)
 	y > buttonRight.posY and y < buttonRight.posY+buttonRight.sizeY then
 		buttonRight.state = true
 	end
-	
+
 	if buttonAttack.state then
 		buttonAttack=true
 	elseif buttonDefend.state then
@@ -156,7 +159,7 @@ function love.update(dt)
 		playerCharGraphic.posX = playerCharGraphic.posX+playerCharGraphic.speed*dt
 		buttonRight.state = false
 
-end
+	end
 	if playerCharGraphic.posX>collisionBox.posX and playerCharGraphic.posY<collisionBox.posY then
 		collisionBox.collided=true
 	end
@@ -178,8 +181,8 @@ function love.draw()
 		score=score+1
 		print("score: ".. score)
 		love.graphics.print("Hit!!!",250, 100)
-    end
-	
+	end
+
 	-- This should turn the circle/npc black and white to appear blink when pushing the button
 	if not (buttonAttack.state) then
 		love.graphics.setColor(255,255,255)
@@ -213,12 +216,12 @@ function love.draw()
 	love.graphics.rectangle("fill",buttonRight.posX,buttonRight.posY,buttonRight.sizeX,buttonRight.sizeY)
 	love.graphics.setColor(255,255,255)
 	]]
-	
-		love.graphics.setColor(255,255,255)
-		love.graphics.circle("fill",50,5,npcCharGraphic.sizeX)
-		love.graphics.setColor(0,0,0)
-		love.graphics.circle("fill",50,5,npcCharGraphic.sizeX)
-	
-	
+
+	love.graphics.setColor(255,255,255)
+	love.graphics.circle("fill",50,5,npcCharGraphic.sizeX)
+	love.graphics.setColor(0,0,0)
+	love.graphics.circle("fill",50,5,npcCharGraphic.sizeX)
+
+
 
 end
