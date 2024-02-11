@@ -143,6 +143,7 @@ end
 
 --  This is where things move
 function love.update(dt)
+	player:Update(dt)
 	if buttonUp.state then
 		playerCharGraphic.posY = playerCharGraphic.posY-playerCharGraphic.speed*dt
 		buttonUp.state = false
