@@ -32,7 +32,7 @@ function Player:update(dt)
 	end
 
 	--Get the width of the window
-	local window_width = love.graphics.getWidth()
+--	local window_width = love.graphics.getWidth()
 
 --If the left side is too far too the left then..
 	if self.x < 0 then
@@ -40,13 +40,14 @@ function Player:update(dt)
 		self.x = 0
 
 --Else, if the right side is too far to the right then..
-	elseif self.x + self.width > window_width then
+--[[	elseif self.x + self.width > window_width then
 		--Set the right side to the window's width.
-		self.x = window_width - self.width
+		self.x = window_width - self.width]]
 	end
 
 end
 
 function Player:draw()
-	love.graphics.draw(self.image, self.x, self.y)
+	-- love.graphics.draw(self.image, self.x, self.y)
+	love.graphics.rectangle("fill",playerCharGraphic.posX+playingFieldXOffset,playerCharGraphic.posY+playingFieldYOffset,playerCharGraphic.sizeX,playerCharGraphic.sizeY)
 end

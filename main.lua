@@ -143,7 +143,7 @@ end
 
 --  This is where things move
 function love.update(dt)
-	player:Update(dt)
+	player:update(dt)
 	-- npc:Update(dt)
 	--[[
 	if buttonUp.state then
@@ -214,7 +214,8 @@ function love.draw()
 -- love.graphics.setColor(255,255,255)
 
 -- Player on Playing Field
-	love.graphics.rectangle("fill",playerCharGraphic.posX+playingFieldXOffset,playerCharGraphic.posY+playingFieldYOffset,playerCharGraphic.sizeX,playerCharGraphic.sizeY)
+--	love.graphics.rectangle("fill",playerCharGraphic.posX+playingFieldXOffset,playerCharGraphic.posY+playingFieldYOffset,playerCharGraphic.sizeX,playerCharGraphic.sizeY)
+player:draw()
 --[[ Defend Button
 	love.graphics.setColor(255,0,0)
 	love.graphics.rectangle("fill",buttonRight.posX,buttonRight.posY,buttonRight.sizeX,buttonRight.sizeY)
