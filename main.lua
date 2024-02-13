@@ -144,7 +144,8 @@ end
 --  This is where things move
 function love.update(dt)
 	player:Update(dt)
-	npc:Update(dt)
+	-- npc:Update(dt)
+	--[[
 	if buttonUp.state then
 		playerCharGraphic.posY = playerCharGraphic.posY-playerCharGraphic.speed*dt
 		buttonUp.state = false
@@ -162,11 +163,12 @@ function love.update(dt)
 		buttonRight.state = false
 
 	end
+	
 	if playerCharGraphic.posX>collisionBox.posX and playerCharGraphic.posY<collisionBox.posY then
 		collisionBox.collided=true
 	end
 -- buttonUp.posX=buttonUp.posX+10*dt
-
+	]]
 end
 
 --[[
