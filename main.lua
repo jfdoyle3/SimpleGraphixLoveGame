@@ -209,8 +209,10 @@ function love.draw()
 
 --]]
 -- Button 1 / Button 2
+--[[
 	love.graphics.rectangle("fill",buttonAttack.posX,buttonAttack.posY,buttonAttack.sizeX,buttonAttack.sizeY)
 	love.graphics.rectangle("fill",buttonDefend.posX,buttonDefend.posY,buttonDefend.sizeX,buttonDefend.sizeY)
+	]]
 -- love.graphics.setColor(255,255,255)
 
 -- Player on Playing Field
