@@ -114,7 +114,7 @@ function love.load()
 end
 --[[
            Mouse Press / Screen Tap
-	]]
+	
 function love.mousepressed(x, y)
 	if x > buttonUp.posX and x < buttonUp.posX+buttonUp.sizeX and
 	y > buttonUp.posY and y < buttonUp.posY+buttonUp.sizeY then
@@ -139,7 +139,7 @@ function love.mousepressed(x, y)
 		buttonDefend=true
 	end
 end
-
+]]
 
 --  This is where things move
 function love.update(dt)
