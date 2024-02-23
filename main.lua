@@ -76,82 +76,14 @@ function love.load()
 	buttonAttack = Button.new("Attack",300,280,100,50,false)
 	buttonDefend = Button.new("Defend",500,280,100,50,false)
 
---
-
-
---[[ Player
--- player = Player.new()
-	playerCharGraphic = {}
-	playerCharGraphic.posX = 0+playingFieldXOffset
-	playerCharGraphic.posY = 0+playingFieldYOffset
-	playerCharGraphic.sizeX = 10
-	playerCharGraphic.sizeY = 10
-	playerCharGraphic.speed = 100
-
--- NPC
---	npc = Npc.new()
-	npcCharGraphic = {}
-	npcCharGraphic.posX = 80+playingFieldXOffset
-	npcCharGraphic.posY = 80+playingFieldYOffset
-	npcCharGraphic.sizeX = 5
-	npcCharGraphic.sizeY = 5
-
-
-
-	collisionBox = {}
-	collisionBox.posX = 80+playingFieldXOffset
-	collisionBox.posY = 80+playingFieldYOffset
-	collisionBox.sizeX = 5
-	collisionBox.sizeY = 5
-	collisionBox.playerMid=5
-	collisionBox.collided=false
-
-]]
-
-
-
-
 end
---[[
-           Mouse Press / Screen Tap
-	
-function love.mousepressed(x, y)
-	if x > buttonUp.posX and x < buttonUp.posX+buttonUp.sizeX and
-	y > buttonUp.posY and y < buttonUp.posY+buttonUp.sizeY then
-		buttonUp.state = true
-
-	elseif x > buttonDown.posX and x < buttonDown.posX+buttonDown.sizeX and
-	y > buttonDown.posY and y < buttonDown.posY+buttonDown.sizeY then
-		buttonDown.state = true
-
-	elseif x > buttonLeft.posX and x < buttonLeft.posX+buttonLeft.sizeX and
-	y > buttonLeft.posY and y < buttonLeft.posY+buttonLeft.sizeY then
-		buttonLeft.state = true
-
-	elseif x > buttonRight.posX and x < buttonRight.posX+buttonRight.sizeX and
-	y > buttonRight.posY and y < buttonRight.posY+buttonRight.sizeY then
-		buttonRight.state = true
-	end
-
-	if buttonAttack.state then
-		buttonAttack=true
-	elseif buttonDefend.state then
-		buttonDefend=true
-	end
-end
-]]
 
 --  This is where things move
 function love.update(dt)
 	player:update(dt)
 	-- npc:Update(dt)
 
---[[	
-	if playerCharGraphic.posX>collisionBox.posX and playerCharGraphic.posY<collisionBox.posY then
-		collisionBox.collided=true
-	end
--- buttonUp.posX=buttonUp.posX+10*dt
-	]]
+
 end
 
 --[[
