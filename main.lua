@@ -59,13 +59,6 @@ function love.load()
 	}
 	acionLog = {}
 
-
-
---[[
-	      Objects
-	]]
-
-
 -- Buttons
 -- Joystick
 	buttonUp = Button.new("UP",100,230,50,50,false)
