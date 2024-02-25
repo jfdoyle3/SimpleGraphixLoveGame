@@ -5,6 +5,7 @@
 Player=Object:extend()
 
 function Player:new()
+	self.image = love.graphics.newImage("images/player.png")
 	self.name=name or "Hero"
 	self.life = 10
 	self.attack = 10
@@ -48,6 +49,5 @@ function Player:update(dt)
 end
 
 function Player:draw()
-	-- love.graphics.draw(self.image, self.x, self.y)
-	love.graphics.rectangle("fill",playerCharGraphic.posX+playingFieldXOffset,playerCharGraphic.posY+playingFieldYOffset,playerCharGraphic.sizeX,playerCharGraphic.sizeY)
+	love.graphics.draw(self.image, self.x, self.y)
 end

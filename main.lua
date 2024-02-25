@@ -22,10 +22,10 @@ function love.load()
 	Object=require "library.classic"
 	require "objects.button"
 	require "objects.player"
-	require "objects.npc"
+	require "objects.energy"
 	
 	player=Player()
-	npc=Npc()
+	energy=Energy()
 
 -- Playing Field - Adnroid Pixel 4a
 	playingFieldXOffset = 5
@@ -48,16 +48,8 @@ function love.load()
 	playerMiss = 0
 
 
---[[
-	  Use last action and round for a key value
-	of game rounds logs for actionlog
-	]]
 
 
-	lastAction = {
-		"Score","Miss"
-	}
-	acionLog = {}
 
 -- Buttons
 -- Joystick
@@ -95,7 +87,7 @@ function love.draw()
 	end
 	]]
 -- Playing Field - Android Pixel 4a
-	love.graphics.rectangle("line",playingFieldXOffset,playingFieldYOffset,playingFieldXSize,playingFieldYSize)
+
 -- Button Layer
 --	print("attack: "..tostring(buttonAttack.state))
 --	print("defend: "..tostring(buttonDefend.state))
@@ -107,27 +99,9 @@ function love.draw()
 	love.graphics.rectangle("fill",buttonRight.posX,buttonRight.posY,buttonRight.sizeX,buttonRight.sizeY)
 
 --]]
--- Button 1 / Button 2
---[[
-	love.graphics.rectangle("fill",buttonAttack.posX,buttonAttack.posY,buttonAttack.sizeX,buttonAttack.sizeY)
-	love.graphics.rectangle("fill",buttonDefend.posX,buttonDefend.posY,buttonDefend.sizeX,buttonDefend.sizeY)
-	]]
--- love.graphics.setColor(255,255,255)
 
--- Player on Playing Field
---	love.graphics.rectangle("fill",playerCharGraphic.posX+playingFieldXOffset,playerCharGraphic.posY+playingFieldYOffset,playerCharGraphic.sizeX,playerCharGraphic.sizeY)
 player:draw()
---[[ Defend Button
-	love.graphics.setColor(255,0,0)
-	love.graphics.rectangle("fill",buttonRight.posX,buttonRight.posY,buttonRight.sizeX,buttonRight.sizeY)
-	love.graphics.setColor(255,255,255)
-	]]
-
-	love.graphics.setColor(255,255,255)
-	love.graphics.circle("fill",50,5,npcCharGraphic.sizeX)
-	love.graphics.setColor(0,0,0)
-	love.graphics.circle("fill",50,5,npcCharGraphic.sizeX)
-
+energy:draw()
 
 
 end

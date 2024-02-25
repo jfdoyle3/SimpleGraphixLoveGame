@@ -1,22 +1,18 @@
 --[[
-	NPC Ojbect
+	Energy Object
 ]]
-Npc=Object:extend()
+Energy=Object:extend()
 
-function Npc:new()
-	self.name=name or "Nemesis"
-	self.life = 10
-	self.attack = 10
-	self.defend = 10
-	self.str = 10
-	self.dex = 10
+function Energy:new()
+	self.image = love.graphics.newImage("images/energy.png")
+	self.name=name or "Energy"
 	self.state=false
 	self.x=350
 	self.y=20
 	self.speed=500
 end
 
-function Npc:update(dt)
+function Energy:update(dt)
     self.x = self.x + self.speed * dt
 
     local window_width = love.graphics.getWidth()
@@ -30,6 +26,6 @@ function Npc:update(dt)
     end
 end
 
-function Npc:draw()
+function Energy:draw()
     love.graphics.draw(self.image, self.x, self.y)
 end
