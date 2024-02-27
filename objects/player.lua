@@ -14,7 +14,7 @@ function Player:new()
 	self.dex = 10
 	self.state=false
 	self.x=300
-	self.y=20
+	self.y=100
 	self.speed=500
 end
 function Player:keyPressed(key)

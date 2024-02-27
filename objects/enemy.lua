@@ -1,18 +1,16 @@
---[[
-	Energy Object
-]]
-Energy=Object:extend()
+--! file: enemy.lua
+Enemy = Object:extend()
 
-function Energy:new()
-	self.image = love.graphics.newImage("images/energy.png")
-	self.name=name or "Energy"
-	self.state=false
-	self.x=350
-	self.y=100
-	self.speed=500
+function Enemy:new()
+    self.image = love.graphics.newImage("images/enemy.png")
+    self.x = 375
+    self.y = 100
+    self.speed = 100
+    self.width = self.image:getWidth()
+    self.height = self.image:getHeight()
 end
 
-function Energy:update(dt)
+function Enemy:update(dt)
     self.x = self.x + self.speed * dt
 
     local window_width = love.graphics.getWidth()
@@ -26,6 +24,6 @@ function Energy:update(dt)
     end
 end
 
-function Energy:draw()
+function Enemy:draw()
     love.graphics.draw(self.image, self.x, self.y)
 end

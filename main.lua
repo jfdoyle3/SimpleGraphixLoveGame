@@ -23,9 +23,11 @@ function love.load()
 	require "objects.button"
 	require "objects.player"
 	require "objects.energy"
+	require "objects.enemy"
 	
 	player=Player()
 	energy=Energy()
+	enemy=Enemy()
 
 -- Playing Field - Adnroid Pixel 4a
 	playingFieldXOffset = 5
@@ -102,6 +104,7 @@ function love.draw()
 
 player:draw()
 energy:draw()
+enemy:draw()
 
 
 end
