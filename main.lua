@@ -55,6 +55,7 @@ function love.load()
 
 -- Buttons
 -- Joystick
+--[[
 	buttonUp = Button.new("UP",100,230,50,50,false)
 	buttonDown = Button.new("Down",100,330,50,50,false)
 	buttonLeft = Button.new("Left",50,280,50,50,false)
@@ -62,7 +63,7 @@ function love.load()
 --
 	buttonAttack = Button.new("Attack",300,280,100,50,false)
 	buttonDefend = Button.new("Defend",500,280,100,50,false)
-
+]]
 end
 
 --  This is where things move
