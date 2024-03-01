@@ -95,13 +95,7 @@ function love.draw()
 --	print("attack: "..tostring(buttonAttack.state))
 --	print("defend: "..tostring(buttonDefend.state))
 -- Joystick Diplay
---[[	love.graphics.setColor(250,255,200)
-	love.graphics.rectangle("fill",buttonUp.posX,buttonUp.posY,buttonUp.sizeX,buttonUp.sizeY)
-	love.graphics.rectangle("fill",buttonDown.posX,buttonDown.posY,buttonDown.sizeX,buttonDown.sizeY)
-	love.graphics.rectangle("fill",buttonLeft.posX,buttonLeft.posY,buttonLeft.sizeX,buttonLeft.sizeY)
-	love.graphics.rectangle("fill",buttonRight.posX,buttonRight.posY,buttonRight.sizeX,buttonRight.sizeY)
 
---]]
 
 player:draw()
 energy:draw()
