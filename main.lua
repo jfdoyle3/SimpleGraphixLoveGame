@@ -88,9 +88,9 @@ function love.draw()
 -- Joystick Diplay
 
 
-player:draw()
+-- player:draw()
 energy:draw()
-enemy:draw()
+--enemy:draw()
 
 
 end
