@@ -20,20 +20,15 @@ function love.load()
 	]]
 --love.keyboard.setTextInput(enable)
 	Object=require "library.classic"
-	require "objects.button"
-	require "objects.player"
-	require "objects.energy"
-	require "objects.enemy"
+	require "objects.marble"
 	
-	player=Player()
-	energy=Energy()
-	enemy=Enemy()
+	marble=Marble()
 
 -- Playing Field - Adnroid Pixel 4a
+-- These offsets is where 0,0. Just under the status bar.
 	playingFieldXOffset = 5
 	playingFieldYOffset = 30
-	playingFieldXSize = 100
-	playingFieldYSize = 100
+
 
 
 
@@ -42,34 +37,13 @@ function love.load()
 	math.randomseed(os.time())
 	npcAction = math.random(10)
 
-	round = 0
 
-	npcMiss = 0
-	npcScore = 0
-	playerScore = 0
-	playerMiss = 0
-
-
-
-
-
--- Buttons
--- Joystick
---[[
-	buttonUp = Button.new("UP",100,230,50,50,false)
-	buttonDown = Button.new("Down",100,330,50,50,false)
-	buttonLeft = Button.new("Left",50,280,50,50,false)
-	buttonRight = Button.new("Right",150,280,50,50,false)
---
-	buttonAttack = Button.new("Attack",300,280,100,50,false)
-	buttonDefend = Button.new("Defend",500,280,100,50,false)
-]]
 end
 
 --  This is where things move
 function love.update(dt)
-	player:update(dt)
-	-- npc:Update(dt)
+
+	-- marble:update(dt)
 
 
 end
@@ -79,18 +53,7 @@ end
 ]]
 function love.draw()
 
-
--- Playing Field - Android Pixel 4a
-
--- Button Layer
---	print("attack: "..tostring(buttonAttack.state))
---	print("defend: "..tostring(buttonDefend.state))
--- Joystick Diplay
-
-
--- player:draw()
-energy:draw()
---enemy:draw()
+	marble:draw()
 
 
 end
