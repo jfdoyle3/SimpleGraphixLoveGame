@@ -11,16 +11,25 @@ function Marble:new()
 	self.x=350
 	self.y=100
 	self.speed=500
-	self.width = self.image:getWidth() 
+	self.width = self.image:getWidth()
+	self.input="keyboard"
 end
 
 function Marble:update(dt)
-   if love.keyboard.isDown("left") then
-		self.x = self.x - self.speed * dt
-	elseif love.keyboard.isDown("right") then
-		self.x = self.x + self.speed * dt
-	end
+	
+	
+	
+	
+	
 
+	if self.input=="keyboard" then
+		self.x=keyboard(self.x,self.speed, dt)
+	end
+	
+	if self.input=="joystick" then
+	-- Joystick function	
+	--	self.x=keyboard(self.x,self.speed, dt)
+	end
 	--Get the width of the window
 	local window_width = love.graphics.getWidth()
 
@@ -36,6 +45,28 @@ function Marble:update(dt)
 	end
 end
 
+function keyboard(x,speed,time)
+
+	if love.keyboard.isDown("left") then
+		x = x - speed * time
+	elseif love.keyboard.isDown("right") then
+		x = x + speed * time
+	end
+	-- need up and down - y axis
+	
+	return x
+end
+
+function joystick(x,speed, time)
+
+	if love.keyboard.isDown("left") then
+		x = x - speed * time
+	elseif love.keyboard.isDown("right") then
+		x = x + speed * time
+	end
+	return x
+end
+
 function Marble:draw()
-    love.graphics.draw(self.image, self.x, self.y)
+	love.graphics.draw(self.image, self.x, self.y)
 end
