@@ -11,20 +11,29 @@ function Marble:new()
 	self.x=350
 	self.y=100
 	self.speed=500
+	self.width = self.image:getWidth() 
 end
 
 function Marble:update(dt)
-    self.x = self.x + self.speed * dt
+   if love.keyboard.isDown("left") then
+		self.x = self.x - self.speed * dt
+	elseif love.keyboard.isDown("right") then
+		self.x = self.x + self.speed * dt
+	end
 
-    local window_width = love.graphics.getWidth()
+	--Get the width of the window
+	local window_width = love.graphics.getWidth()
 
-    if self.x < 0 then
-        self.x = 0
-        self.speed = -self.speed
-    elseif self.x + self.width > window_width then
-        self.x = window_width - self.width
-        self.speed = -self.speed
-    end
+--If the left side is too far too the left then..
+	if self.x < 0 then
+		--Set x to 0
+		self.x = 0
+
+--Else, if the right side is too far to the right then..
+	elseif self.x + self.width > window_width then
+		--Set the right side to the window's width.
+		self.x = window_width - self.width
+	end
 end
 
 function Marble:draw()

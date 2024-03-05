@@ -8,6 +8,8 @@
 		Load / Update / Draw
 ]]
 
+local joystick
+local marble
 
 function love.load()
 --[[
@@ -30,20 +32,20 @@ function love.load()
 	playingFieldYOffset = 30
 
 
-
-
-
-
 	math.randomseed(os.time())
-	npcAction = math.random(10)
+	randNum = math.random(10)
+	
+	joystick = love.joystick.getJoysticks()[1] -- note, that you may like to get all joystick and select the best one, this just gets the first one
 
 
 end
 
+
+
 --  This is where things move
 function love.update(dt)
-
-	-- marble:update(dt)
+-- local x, y, z = joystick:getAxes() -- now you can get orientation of phone and process it
+	 marble:update(dt)
 
 
 end
