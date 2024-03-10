@@ -1,3 +1,13 @@
+--[[
+
+	Joystick control
+	this code works with joystick
+	using d-pad controls.
+
+]]
+
+
+
 function love.load()
     local joysticks = love.joystick.getJoysticks()
     joystick = joysticks[1]
