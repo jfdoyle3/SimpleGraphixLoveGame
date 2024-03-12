@@ -9,13 +9,12 @@ end
 ]]
 
 --[[
-      joysticks is a table
+      Joysticks is a table of 2 joysticks  
    
-   There are 2 joysticks on phone
-   1 - joystick
-   2 - accelerometer
-   
-   using # picks the last element in the table
+	  [1,2] - Joystick works - probably Joystick A & B
+	  [2] - phones's accelerometer
+	  [#joysticks] - gets the last element in the table  
+  
 ]]
 joystick = joysticks[#joysticks]
 position = {
@@ -24,7 +23,7 @@ position = {
 speed = 500
 
 end
-
+ 
 function love.update(dt)
 if joystick then
 axis1, axis2 = joystick:getAxes()
@@ -33,12 +32,12 @@ end
 end
 
 -- Prints a table to console
-function dump(o)
+function printTable(o)
    if type(o) == 'table' then
       local s = '{ '
       for k,v in pairs(o) do
          if type(k) ~= 'number' then k = '"'..k..'"' end
-         s = s .. '['..k..'] = ' .. dump(v) .. ','
+         s = s .. '['..k..'] = ' .. printTable(v) .. ','
       end
       return s .. '} '
    else
@@ -46,6 +45,6 @@ function dump(o)
    end
 end
 function love.draw()
-  love.graphics.print(dump(joysticks),100,100)
+  love.graphics.print(printTable(joysticks),100,100)
 love.graphics.circle("fill", position.x, position.y, 50)
 end
