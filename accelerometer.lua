@@ -1,12 +1,6 @@
 local joystick, position, speed
 function love.load()
 joysticks = love.joystick.getJoysticks()
---[[
-looped = 0
-for i in ipairs(joysticks) do
-looped = looped + 1
-end
-]]
 
 --[[
       Joysticks is a table of 2 joysticks  
