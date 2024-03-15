@@ -16,22 +16,21 @@ function Marble:new(source, name)
 end
 
 --[[ Need to initalize Joystick and choose the input.
-  if not joystick then return end
+
   Love Update function
 ]]
 function Marble:update(dt)
 
 	if self.input=="keyboard" then
-		self.x=keyboard(self.x,self.speed, dt)
+		self.x=keyboardInput(self.x,self.speed, dt)
 	end
 
 	if self.input=="joystick" then
-		-- Joystick function	
-		--	self.x=keyboard(self.x,self.speed, dt)
+		self.x,self.y=joystickInput(self.x,self.y,self.speed,dt)
 	end
-	
+
 	if self.input=="phone" then
-		self.x, self.y=phone(self.x,self.y,self.speed,dt)
+		self.x, self.y=phoneInput(self.x,self.y,self.speed,dt)
 	end
 	--Get the width of the window
 	local window_width = love.graphics.getWidth()
@@ -63,7 +62,7 @@ end
 ]]
 
 -- Keyboard Function
-function keyboard(x,speed,time)
+function keyboardInput(x,speed,time)
 
 	if love.keyboard.isDown("left") then
 		x = x - speed * time
@@ -78,24 +77,27 @@ end
 
 
 -- Joystick Function
-function joystick(x,speed, time)
-   
+function joystickInput(x,y,speed, time)
+	joysticks = love.joystick.getJoysticks()
+	joystick = joysticks[1]
 
-    if joystick:isGamepadDown("dpleft") then
-        x = x - speed * time
-    elseif joystick:isGamepadDown("dpright") then
-        x = x + speed * time
-    end
+	if joystick:isGamepadDown("dpleft") then
+		x = x - speed * time
+	elseif joystick:isGamepadDown("dpright") then
+		x = x + speed * time
+	end
 
-    if joystick:isGamepadDown("dpup") then
-        y = y - speed * time
-    elseif joystick:isGamepadDown("dpdown") then
-        y = y + speed * time
-    end
-return x,y
+	if joystick:isGamepadDown("dpup") then
+		y = y - speed * time
+	elseif joystick:isGamepadDown("dpdown") then
+		y = y + speed * time
+	end
+	return x,y
 end
 
-function phone(x,y,speed,time)
+function phoneInput(x,y,speed,time)
+	joysticks = love.joystick.getJoysticks()
+	joystick = joysticks[#joysticks]
 	axis1, axis2 = joystick:getAxes()
 	x, y = x + axis1 * speed * time, y + axis2 * speed * time
 	return x,y

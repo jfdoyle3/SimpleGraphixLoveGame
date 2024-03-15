@@ -25,6 +25,17 @@ function love.load()
 	require "objects.marble"
 	
 	
+	--[[
+	    Trying to initialize joystick once 
+		and pass through joystick where is needed.
+	joysticks = love.joystick.getJoysticks()
+	
+	if not joystick then 
+		inputOption="keyboard"
+	end
+	
+    joystick = joysticks[1]
+	]]
 	
 	-- Playing Field - Adnroid Pixel 4a
 -- These offsets is where 0,0. Just under the status bar.
@@ -38,8 +49,8 @@ function love.load()
 	
 	-- Marble: Input:  keyboard/joystick/phone, Name: Hero, default: Marble
 	name="Hero"
-	inputOption="phone"
-	
+	inputOption="joystick"
+--[[	
 	if inputOption=="joystick" then
 		controller=1
 	end
@@ -49,7 +60,7 @@ function love.load()
 	end
 	
 	joystick = love.joystick.getJoysticks()[controller] -- note, that you may like to get all joystick and select the best one, this just gets the first one
-	
+	]]
 	marble=Marble(inputOption,joystick,name)
 
 
