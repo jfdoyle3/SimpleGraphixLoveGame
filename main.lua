@@ -49,7 +49,7 @@ function love.load()
 	
 	-- Marble: Input:  keyboard/joystick/phone, Name: Hero, default: Marble
 	name="Hero"
-	inputOption="joystick"
+	inputOption="phone"
 --[[	
 	if inputOption=="joystick" then
 		controller=1
