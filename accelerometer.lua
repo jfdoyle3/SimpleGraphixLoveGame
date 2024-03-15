@@ -1,5 +1,12 @@
+-- Break code down to essential.
+
+
+--optional
 local joystick, position, speed
+
 function love.load()
+	
+	-- need
 joysticks = love.joystick.getJoysticks()
 
 --[[
