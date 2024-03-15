@@ -15,14 +15,14 @@ function Marble:new(source, name)
 	self.input=source
 end
 
---[[ Need to initalize Joystick and choose the input.
 
+--[[
   Love Update function
 ]]
 function Marble:update(dt)
 
 	if self.input=="keyboard" then
-		self.x=keyboardInput(self.x,self.speed, dt)
+		self.x,self.y=keyboardInput(self.x,self.y,self.speed, dt)
 	end
 
 	if self.input=="joystick" then
@@ -62,16 +62,22 @@ end
 ]]
 
 -- Keyboard Function
-function keyboardInput(x,speed,time)
+function keyboardInput(x,y,speed,time)
 
 	if love.keyboard.isDown("left") then
 		x = x - speed * time
 	elseif love.keyboard.isDown("right") then
 		x = x + speed * time
 	end
-	-- need up and down - y axis
+	
+	if love.keyboard.isDown("up") then
+		y = y - speed * time
+	elseif love.keyboard.isDown("down") then
+		y = y + speed * time
+	end
+	
 
-	return x
+	return x,y
 end
 
 

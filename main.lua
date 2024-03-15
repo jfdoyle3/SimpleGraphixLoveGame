@@ -46,10 +46,11 @@ function love.load()
 	math.randomseed(os.time())
 	randNum = math.random(10)
 	
+	inputSelection={"keyboard","joystick","phone"}
 	
 	-- Marble: Input:  keyboard/joystick/phone, Name: Hero, default: Marble
 	name="Hero"
-	inputOption="phone"
+	inputOption=inputSelection[1]
 --[[	
 	if inputOption=="joystick" then
 		controller=1
