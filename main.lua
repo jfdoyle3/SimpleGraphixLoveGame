@@ -21,7 +21,7 @@ function love.load()
 		just enabling it may be fine.
 	]]
 --love.keyboard.setTextInput(enable)
-	Object=require "library.classic"
+	Object=require "dependencies.classic"
 	require "objects.marble"
 	
 	
