@@ -8,10 +8,11 @@ function Marble:new(source, name)
 	self.image = love.graphics.newImage("images/energy.png")
 	self.name=name or "Marble"
 	self.state=false
-	self.x=350
-	self.y=100
+	self.x=10
+	self.y=10
 	self.speed=500
 	self.width = self.image:getWidth()
+	self.height= self.image:getHeight()
 	self.input=source
 end
 
@@ -34,17 +35,30 @@ function Marble:update(dt)
 	end
 	--Get the width of the window
 	local window_width = love.graphics.getWidth()
+	local window_height=love.graphics.getHeight()
 
 --If the left side is too far too the left then..
 	if self.x < 0 then
 		--Set x to 0
 		self.x = 0
-
+	
 --Else, if the right side is too far to the right then..
 	elseif self.x + self.width > window_width then
 		--Set the right side to the window's width.
 		self.x = window_width - self.width
 	end
+--	
+	--If the left side is too far too the left then..
+	if self.y< 0 then
+		--Set x to 0
+		self.y = 0
+
+--Else, if the right side is too far to the right then..
+	elseif self.y + self.height > window_height then
+		--Set the right side to the window's width.
+		self.y = window_height - self.height
+	end
+	
 end
 
 
