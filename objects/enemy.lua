@@ -3,8 +3,8 @@ Enemy = Object:extend()
 
 function Enemy:new()
     self.image = love.graphics.newImage("images/enemy.png")
-    self.x = 375
-    self.y = 100
+    self.x = 200
+    self.y = 200
     self.speed = 100
     self.width = self.image:getWidth()
     self.height = self.image:getHeight()

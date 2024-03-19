@@ -23,6 +23,7 @@ function love.load()
 --love.keyboard.setTextInput(enable)
 	Object=require "dependencies.classic"
 	require "objects.marble"
+	require "objects.enemy"
 	
 	
 	--[[
@@ -70,6 +71,7 @@ function love.load()
 
 	]]
 	marble=Marble(inputOption,joystick,name)
+	enemy=Enemy()
 
 
 end
@@ -96,6 +98,8 @@ end
 function love.draw()
 	
 	marble:draw()
+	enemy:draw()
+	
 
 
 end
