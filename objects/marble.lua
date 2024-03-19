@@ -8,8 +8,8 @@ function Marble:new(source, name)
 	self.image = love.graphics.newImage("images/energy.png")
 	self.name=name or "Marble"
 	self.state=false
-	self.x=10
-	self.y=10
+	self.x=100
+	self.y=100
 	self.speed=500
 	self.width = self.image:getWidth()
 	self.height= self.image:getHeight()
