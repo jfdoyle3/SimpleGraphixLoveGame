@@ -9,7 +9,7 @@
 ]]
 
 
-local marble
+local marble,enemy
 
 function love.load()
 --[[

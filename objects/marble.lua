@@ -90,7 +90,6 @@ function keyboardInput(x,y,speed,time)
 		y = y + speed * time
 	end
 	
-
 	return x,y
 end
 
