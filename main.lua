@@ -24,8 +24,8 @@ function love.load()
 	Object=require "dependencies.classic"
 	require "objects.marble"
 	require "objects.enemy"
-	
-	
+
+
 	--[[
 	    Trying to initialize joystick once 
 		and pass through joystick where is needed.
@@ -37,7 +37,7 @@ function love.load()
 	
     joystick = joysticks[1]
 	]]
-	
+
 	-- Playing Field - Adnroid Pixel 4a
 -- These offsets is where 0,0. Just under the status bar.
 	playingFieldXOffset = 5
@@ -46,9 +46,9 @@ function love.load()
 
 	math.randomseed(os.time())
 	randNum = math.random(10)
-	
+
 	inputSelection={"keyboard","joystick","phone"}
-	
+
 	-- Marble: Input:  keyboard/joystick/phone, Name: Hero, default: Marble
 	name="Hero"
 	inputOption=inputSelection[1]
@@ -74,6 +74,8 @@ function love.load()
 	enemy=Enemy()
 
 
+	
+
 end
 
 
@@ -87,19 +89,30 @@ function love.update(dt)
 	
 	Updates the objects: sprite, movement, other actions: refer to object.
 ]]
-	 marble:update(dt)
+	marble:update(dt)
 
+--[[
+		collision detection here?
+	   marble.x, marble.y  |  enemy.x, enemy.y 
+		these give back x,y pos.
+		
+]]
 
 end
-
 --[[
 	Draw
 ]]
 function love.draw()
-	
+
 	marble:draw()
 	enemy:draw()
-	
 
+end
 
+-- Collision detection
+function CheckCollision(x1,y1,w1,h1, x2,y2,w2,h2)
+	return player_x1 < enemy_x2+enemy_width2 and
+	enemey_x2 < player_x1+enemy_width1 and
+	player_y1 < enemy_y2+enemy_height2 and
+	enmey_y2 < player_y1+player_height1
 end
