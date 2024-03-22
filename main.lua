@@ -95,9 +95,8 @@ function love.update(dt)
 		collision detection here?
 	   marble.x, marble.y  |  enemy.x, enemy.y 
 		these give back x,y pos.
-		
 ]]
-
+  didCollide=CheckCollision(marble.x,marble.y)
 end
 --[[
 	Draw
