@@ -96,7 +96,8 @@ function love.update(dt)
 	   marble.x, marble.y  |  enemy.x, enemy.y 
 		these give back x,y pos.
 ]]
-  didCollide=CheckCollision(marble.x,marble.y)
+  didCollide=CheckCollision(marble.x,marble.y,marble.width,marble.height,enemy.x,enemy.y,enemy.width,enemy.height)
+  print(didCollide)
 end
 --[[
 	Draw
@@ -109,9 +110,9 @@ function love.draw()
 end
 
 -- Collision detection
-function CheckCollision(x1,y1,w1,h1, x2,y2,w2,h2)
+function CheckCollision(player_x1,player_y1,player_width1,player_height1, enemy_x2,enemy_y2,enemy_width2,enemy_height2)
 	return player_x1 < enemy_x2+enemy_width2 and
-	enemey_x2 < player_x1+enemy_width1 and
+	enemy_x2 < player_x1+player_width1 and
 	player_y1 < enemy_y2+enemy_height2 and
-	enmey_y2 < player_y1+player_height1
+	enemy_y2 < player_y1+player_height1
 end

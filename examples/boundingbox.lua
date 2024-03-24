@@ -18,7 +18,7 @@ end
 -- try this out.
 function CheckCollision(x1,y1,w1,h1, x2,y2,w2,h2)
   return player_x1 < enemy_x2+enemy_width2 and
-         enemey_x2 < player_x1+enemy_width1 and
+         enemy_x2 < player_x1+player_width1 and
          player_y1 < enemy_y2+enemy_height2 and
-         enmey_y2 < player_y1+player_height1
+         enemy_y2 < player_y1+player_height1
 end
