@@ -74,8 +74,6 @@ function love.load()
 	enemy=Enemy()
 
 
-	
-
 end
 
 
@@ -96,8 +94,8 @@ function love.update(dt)
 	   marble.x, marble.y  |  enemy.x, enemy.y 
 		these give back x,y pos.
 ]]
-  didCollide=CheckCollision(marble.x,marble.y,marble.width,marble.height,enemy.x,enemy.y,enemy.width,enemy.height)
-  print(didCollide)
+	collided=CheckCollision(marble.x,marble.y,marble.width,marble.height,enemy.x,enemy.y,enemy.width,enemy.height)
+
 end
 --[[
 	Draw
@@ -105,7 +103,12 @@ end
 function love.draw()
 
 	marble:draw()
-	enemy:draw()
+	
+	if not collided then
+		enemyImage=enemy:draw()
+	elseif collided then 
+		enemyImage=nil
+	end
 
 end
 
