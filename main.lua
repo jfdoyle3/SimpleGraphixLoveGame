@@ -24,7 +24,8 @@ function love.load()
 	Object=require "dependencies.classic"
 	require "objects.marble"
 	require "objects.enemy"
-
+	
+	score=0
 
 	--[[
 	    Trying to initialize joystick once 
@@ -95,6 +96,7 @@ function love.update(dt)
 		these give back x,y pos.
 ]]
 	collided=CheckCollision(marble.x,marble.y,marble.width,marble.height,enemy.x,enemy.y,enemy.width,enemy.height)
+	
 
 end
 --[[
@@ -107,9 +109,12 @@ function love.draw()
 	if not collided then
 		enemyImage=enemy:draw()
 	elseif collided then 
+		-- removes/blanks enemy from screen
 		enemyImage=nil
+		-- increment score
+		score=score+1
 	end
-
+	print(score)
 end
 
 -- Collision detection
