@@ -72,7 +72,7 @@ function love.load()
 
 	]]
 	marble=Marble(inputOption,joystick,name)
-	enemy=Enemy()
+	enemy=Enemy(50,50)
 
 
 end

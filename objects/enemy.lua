@@ -1,10 +1,10 @@
 --! file: enemy.lua
 Enemy = Object:extend()
 
-function Enemy:new()
+function Enemy:new(x,y)
     self.image = love.graphics.newImage("images/enemy.png")
-    self.x = 200
-    self.y = 200
+    self.x = x
+    self.y = y
     self.speed = 100
     self.width = self.image:getWidth()
     self.height = self.image:getHeight()
