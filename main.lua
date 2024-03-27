@@ -47,6 +47,8 @@ function love.load()
 
 	math.randomseed(os.time())
 	randNum = math.random(10)
+	enemyRandLocationX=math.random(100)
+	enemyRandLocationY=math.random(100)
 
 	inputSelection={"keyboard","joystick","phone"}
 
