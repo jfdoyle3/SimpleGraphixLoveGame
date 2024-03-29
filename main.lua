@@ -24,6 +24,7 @@ function love.load()
 	Object=require "dependencies.classic"
 	require "objects.marble"
 	require "objects.enemy"
+	require "library.collision"
 	
 	score=0
 
@@ -117,12 +118,4 @@ function love.draw()
 		score=score+1
 	end
 	print(score)
-end
-
--- Collision detection
-function CheckCollision(player_x1,player_y1,player_width1,player_height1, enemy_x2,enemy_y2,enemy_width2,enemy_height2)
-	return player_x1 < enemy_x2+enemy_width2 and
-	enemy_x2 < player_x1+player_width1 and
-	player_y1 < enemy_y2+enemy_height2 and
-	enemy_y2 < player_y1+player_height1
 end
