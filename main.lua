@@ -25,7 +25,7 @@ function love.load()
 	require "objects.marble"
 	require "objects.enemy"
 	require "library.collision"
-	
+
 	score=0
 
 	--[[
@@ -99,23 +99,25 @@ function love.update(dt)
 		these give back x,y pos.
 ]]
 	collided=CheckCollision(marble.x,marble.y,marble.width,marble.height,enemy.x,enemy.y,enemy.width,enemy.height)
-	
 
-end
+	if collided then 
+		score=CheckCollisionAndScore(marble.x,marble.y,marble.width,marble.height,enemy.x,enemy.y,enemy.width,enemy.height,score)
+
+	end
 --[[
 	Draw
 ]]
-function love.draw()
+	function love.draw()
 
-	marble:draw()
-	
-	if not collided then
-		enemyImage=enemy:draw()
-	elseif collided then 
-		-- removes/blanks enemy from screen
-		enemyImage=nil
-		-- increment score
-		score=score+1
+		marble:draw()
+
+		if not collided then
+			enemyImage=enemy:draw()
+		elseif collided then 
+			-- removes/blanks enemy from screen
+			enemyImage=nil
+			-- increment score
+			print(score)
+		end
 	end
-	print(score)
 end
