@@ -118,6 +118,7 @@ function love.update(dt)
 			enemyImage=nil
 			-- increment score
 			print(score)
+			love.graphics.print(score,10,10)
 		end
 	end
 end
