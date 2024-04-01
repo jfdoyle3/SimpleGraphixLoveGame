@@ -45,6 +45,8 @@ function love.load()
 	playingFieldXOffset = 5
 	playingFieldYOffset = 30
 
+	lineX=90
+	lineY=90
 
 	math.randomseed(os.time())
 	randNum = math.random(10)
@@ -52,7 +54,9 @@ function love.load()
 	enemyRandLocationY=math.random(100)
 
 	inputSelection={"keyboard","joystick","phone"}
-
+	marble=Marble(inputOption,joystick,name)
+	enemy=Enemy(enemyRandLocationX,enemyRandLocationY)
+	
 	-- Marble: Input:  keyboard/joystick/phone, Name: Hero, default: Marble
 	name="Hero"
 	inputOption=inputSelection[1]
@@ -74,9 +78,6 @@ function love.load()
 	
 
 	]]
-	marble=Marble(inputOption,joystick,name)
-	enemy=Enemy(50,50)
-
 
 end
 
@@ -98,9 +99,9 @@ function love.update(dt)
 	   marble.x, marble.y  |  enemy.x, enemy.y 
 		these give back x,y pos.
 ]]
-	collided=CheckCollision(marble.x,marble.y,marble.width,marble.height,enemy.x,enemy.y,enemy.width,enemy.height)
+	collidedEnemy=CheckCollision(marble.x,marble.y,marble.width,marble.height,enemy.x,enemy.y,enemy.width,enemy.height)
 
-	if collided then 
+	if collidedEnemy then 
 		score=CheckCollisionAndScore(marble.x,marble.y,marble.width,marble.height,enemy.x,enemy.y,enemy.width,enemy.height,score)
 
 	end
@@ -108,12 +109,12 @@ function love.update(dt)
 	Draw
 ]]
 	function love.draw()
-
+		love.graphics.line(lineX,lineY,lineX,lineY+50)
 		marble:draw()
 
-		if not collided then
+		if not collidedEnemy then
 			enemyImage=enemy:draw()
-		elseif collided then 
+		elseif collidedEnemy then 
 			-- removes/blanks enemy from screen
 			enemyImage=nil
 			-- increment score
