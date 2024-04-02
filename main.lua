@@ -117,8 +117,6 @@ function love.update(dt)
 		elseif collidedEnemy then 
 			-- removes/blanks enemy from screen
 			enemyImage=nil
-			-- increment score
-			print(score)
 			love.graphics.print(score,10,10)
 		end
 	end
