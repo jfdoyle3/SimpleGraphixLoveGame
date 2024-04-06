@@ -90,7 +90,8 @@ function love.update(dt)
 		score=CheckCollisionAndScore(marble.x,marble.y,marble.width,marble.height,enemy.x,enemy.y,enemy.width,enemy.height,score)
 	end
 	
-	
+	if collidedWall then 
+		-- what happens?
 	
 	end
 --[[
