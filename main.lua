@@ -47,7 +47,9 @@ function love.load()
 
 	wallX=90
 	wallY=90
-	wallLength=wallY+50
+	wallHeight=40
+	wallWidth=5
+	wallRadis=3
 
 	math.randomseed(os.time())
 	randNum = math.random(10)
@@ -84,21 +86,17 @@ function love.update(dt)
 		these give back x,y pos.
 ]]
 	collidedEnemy=CheckCollision(marble.x,marble.y,marble.width,marble.height,enemy.x,enemy.y,enemy.width,enemy.height)
-	collidedWall=CheckCollision(marble.x,marble.y,marble.width,marble.height,wallX,wallY,wallX,wallLength)
+--	collidedWall=CheckCollision(marble.x,marble.y,marble.width,marble.height,wallX,wallY,wallX,wallLength)
 
-	if collidedEnemy then 
-		score=CheckCollisionAndScore(marble.x,marble.y,marble.width,marble.height,enemy.x,enemy.y,enemy.width,enemy.height,score)
-	end
-	
-	if collidedWall then 
-		-- what happens?
-	
+--	if collidedEnemy then 
+--		score=CheckCollisionAndScore(marble.x,marble.y,marble.width,marble.height,enemy.x,enemy.y,enemy.width,enemy.height,score)
+--	end
 	end
 --[[
 	Draw
 ]]
 	function love.draw()
-		love.graphics.line(wallX,wallY,wallX,wallLength)
+		love.graphics.rectangle("fill",wallX,wallY,wallWidth,wallHeight,wallRadis)
 		marble:draw()
 
 		if not collidedEnemy then
