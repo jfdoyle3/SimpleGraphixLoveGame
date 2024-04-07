@@ -61,24 +61,7 @@ function love.load()
 	-- Marble: Input:  keyboard/joystick/phone, Name: Hero, default: Marble
 	name="Hero"
 	inputOption=inputSelection[1]
---[[
-	joystick = love.joystick.getJoysticks()[controller] -- note, that you may like to get all joystick and select the best one, this just gets the first one
-	if not joystick then return end   -- could be used then default input is keyboard
-	----
-	if not joystick then
-		inputOption=inputSelection[1]
-	end
-	----
-	if inputOption=="joystick" then
-		controller=1
-	end
-	
-	if inputOption=="phone" then
-		controller=2
-	end
-	
 
-	]]
 
 end
 
