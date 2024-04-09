@@ -86,12 +86,18 @@ function love.update(dt)
 		these give back x,y pos.
 ]]
 	collidedEnemy=CheckCollision(marble.x,marble.y,marble.width,marble.height,enemy.x,enemy.y,enemy.width,enemy.height)
---	collidedWall=CheckCollision(marble.x,marble.y,marble.width,marble.height,wallX,wallY,wallX,wallLength)
+	collidedWall=CheckCollision(marble.x,marble.y,marble.width,marble.height,wallX,wallY,wallWidth,wallHeight)
 
---	if collidedEnemy then 
---		score=CheckCollisionAndScore(marble.x,marble.y,marble.width,marble.height,enemy.x,enemy.y,enemy.width,enemy.height,score)
---	end
+	if collidedEnemy then 
+	score=CheckCollisionAndScore(marble.x,marble.y,marble.width,marble.height,enemy.x,enemy.y,enemy.width,enemy.height,score)	
 	end
+	if collidedWall then 
+		print(marble.x)
+		print(marble.y)
+	end
+	
+end
+
 --[[
 	Draw
 ]]
