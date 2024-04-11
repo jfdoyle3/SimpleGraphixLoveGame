@@ -57,22 +57,16 @@ function love.load()
 	enemyRandLocationY=math.random(100)
 
 	inputSelection={"keyboard","joystick","phone"}
-	marble=Marble(inputOption,joystick,name)
-	enemy=Enemy(enemyRandLocationX,enemyRandLocationY)
+	
 	
 	-- Marble: Input:  keyboard/joystick/phone, Name: Hero, default: Marble
 	name="Hero"
 	inputOption=inputSelection[1]
-
+	marble=Marble(inputOption,joystick,name)
+	enemy=Enemy(enemyRandLocationX,enemyRandLocationY)
 
 end
-if not collidedEnemy then
-			enemyImage=enemy:draw()
-		elseif collidedEnemy then 
-			-- removes/blanks enemy from screen
-			enemyImage=nil
-			love.graphics.print(score,10,10)
-		end
+
 
 
 --  This is where things move
@@ -99,9 +93,10 @@ function love.update(dt)
 	end
 	
 	if collidedWall then 
+		print ("wall, x,y")
 		print(marble.x)
 		print(marble.y)
-		
+		marble.x=wallX
 	end
 	
 end
