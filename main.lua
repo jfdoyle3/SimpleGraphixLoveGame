@@ -48,7 +48,7 @@ function love.load()
 	wallX=90
 	wallY=90
 	wallHeight=40
-	wallWidth=5
+	wallWidth=15
 	wallRadius=3
 
 	math.randomseed(os.time())
@@ -93,10 +93,9 @@ function love.update(dt)
 	end
 	
 	if collidedWall then 
-		print ("wall, x,y")
-		print(marble.x)
-		print(marble.y)
-		marble.x=wallX
+		print ("wall: X: "..tostring(marble.x).." | Y: "..tostring(marble.y))
+
+		marble.x=wallX+wallWidth
 	end
 	
 end
