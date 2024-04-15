@@ -103,6 +103,8 @@ function love.update(dt)
 		]]
 		marble.y=wallY+wallHeight
 		marble.x=wallX+wallWidth
+		marble.y=wallY-wallHeight
+		marble.x=wallX-wallWidth
 	end
 	
 end
