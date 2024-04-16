@@ -12,6 +12,7 @@
 local marble,enemy
 
 function love.load()
+	playingGrid={1,1,1,1,1,9,2,0,2,0,2,9,2,0,2,0,2,9,1,1,1,1,1}
 --[[
 		Android/iOS text input is disabled by default.
 		On iOS and Android this variant tells the OS that the
