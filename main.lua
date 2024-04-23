@@ -98,14 +98,12 @@ function love.update(dt)
 	if collidedWall then 
 		print ("wall: X: "..tostring(marble.x).." | Y: "..tostring(marble.y))
 		
-		--[[ collision dectection works with one of the lines
-		currently works, but need a: 
-		marble.y=wallY-wallHeight
-		marble.x=wallX-wallWidth
-		too ..
-		]]
+
+		--right/top side
 		marble.y=wallY+wallHeight
 		marble.x=wallX+wallWidth
+		
+		--left/botton side
 		marble.y=wallY-wallHeight
 		marble.x=wallX-wallWidth
 	end
