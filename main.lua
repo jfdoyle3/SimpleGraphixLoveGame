@@ -120,7 +120,7 @@ end
 		if not collidedEnemy then
 			enemyImage=enemy:draw()
 		elseif collidedEnemy then 
-			
+			score=score+1
 			enemyImage=nil
 			love.graphics.print(score,10,10)
 		end
