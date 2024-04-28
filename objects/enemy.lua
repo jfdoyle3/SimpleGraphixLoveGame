@@ -8,6 +8,7 @@ function Enemy:new(x,y)
     self.speed = 100
     self.width = self.image:getWidth()
     self.height = self.image:getHeight()
+	
 end
 
 function Enemy:update(dt)
