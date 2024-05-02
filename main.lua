@@ -101,11 +101,11 @@ function love.update(dt)
 
 		--right/top side
 		marble.y=wallY+wallHeight
-		marble.x=wallX+wallWidth
+		-- marble.x=wallX+wallWidth
 		
 		--left/botton side
 		marble.y=wallY-wallHeight
-		marble.x=wallX-wallWidth
+		-- marble.x=wallX-wallWidth
 	end
 	
 end
