@@ -13,7 +13,7 @@ local marble,enemy
 
 function love.load()
 	playingGrid={1,1,1,1,1,9,2,0,2,0,2,9,2,0,2,0,2,9,1,1,1,1,1}
-	
+
 	-- create a loop to display grid in a grid like fashion
 --[[
 		Android/iOS text input is disabled by default.
@@ -60,8 +60,8 @@ function love.load()
 	enemyRandLocationY=math.random(100)
 
 	inputSelection={"keyboard","joystick","phone"}
-	
-	
+
+
 	-- Marble: Input:  keyboard/joystick/phone, Name: Hero, default: Marble
 	name="Hero"
 	inputOption=inputSelection[1]
@@ -89,39 +89,53 @@ function love.update(dt)
 		these give back x,y pos.
 ]]
 	collidedEnemy=CheckCollision(marble.x,marble.y,marble.width,marble.height,enemy.x,enemy.y,enemy.width,enemy.height)
-	collidedWall=CheckCollision(marble.x,marble.y,marble.width,marble.height,wallX,wallY,wallWidth,wallHeight)
+	collidedWallX=CheckCollisionX(marble.x,marble.width,wallX,wallWidth)
+	collidedWallY=CheckCollisionY(marble.y,marble.height,wallY,wallHeight)
 
 	if collidedEnemy then 
-	score=CheckCollisionAndScore(marble.x,marble.y,marble.width,marble.height,enemy.x,enemy.y,enemy.width,enemy.height,score)	
+		score=CheckCollisionAndScore(marble.x,marble.y,marble.width,marble.height,enemy.x,enemy.y,enemy.width,enemy.height,score)	
 	end
-	
-	if collidedWall then 
-		print ("wall: X: "..tostring(marble.x).." | Y: "..tostring(marble.y))
-		
+
+	if collidedWallY then 
+		print ("wall: Y: "..tostring(marble.x).." | Y: "..tostring(marble.y))
+
 
 		--right/top side
 		marble.y=wallY+wallHeight
 		-- marble.x=wallX+wallWidth
-		
+
 		--left/botton side
 		marble.y=wallY-wallHeight
 		-- marble.x=wallX-wallWidth
 	end
-	
+
+	if collidedWallY then 
+		print ("wall: X: "..tostring(marble.x).." | Y: "..tostring(marble.y))
+
+
+		--right/top side
+		-- marble.y=wallY+wallHeight
+		 marble.x=wallX+wallWidth
+
+		--left/botton side
+		-- marble.y=wallY-wallHeight
+		 marble.x=wallX-wallWidth
+	end
+
 end
 
 --[[
 	Draw
 ]]
-	function love.draw()
-		love.graphics.rectangle("fill",wallX,wallY,wallWidth,wallHeight,wallRadius)
-		marble:draw()
+function love.draw()
+	love.graphics.rectangle("fill",wallX,wallY,wallWidth,wallHeight,wallRadius)
+	marble:draw()
 
-		if not collidedEnemy then
-			enemyImage=enemy:draw()
-		elseif collidedEnemy then 
-			score=score+1
-			enemyImage=nil
-			love.graphics.print(score,10,10)
-		end
+	if not collidedEnemy then
+		enemyImage=enemy:draw()
+	elseif collidedEnemy then 
+		score=score+1
+		enemyImage=nil
+		love.graphics.print(score,10,10)
 	end
+end
