@@ -110,15 +110,11 @@ function love.update(dt)
 	end
 
 	if collidedWallY then 
-		print ("wall: X: "..tostring(marble.x).." | Y: "..tostring(marble.y))
+		-- print ("wall: X: "..tostring(marble.x).." | Y: "..tostring(marble.y))
 
-
-		--right/top side
-		-- marble.y=wallY+wallHeight
 		 marble.x=wallX+wallWidth
 
-		--left/botton side
-		-- marble.y=wallY-wallHeight
+	
 		 marble.x=wallX-wallWidth
 	end
 
