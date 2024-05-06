@@ -126,7 +126,7 @@ end
 function love.draw()
 	love.graphics.rectangle("fill",wallX,wallY,wallWidth,wallHeight,wallRadius)
 	marble:draw()
-
+--[[
 	if not collidedEnemy then
 		enemyImage=enemy:draw()
 	elseif collidedEnemy then 
@@ -134,4 +134,5 @@ function love.draw()
 		enemyImage=nil
 		love.graphics.print(score,10,10)
 	end
+	]]
 end
