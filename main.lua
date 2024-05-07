@@ -12,7 +12,7 @@
 local marble,enemy
 
 function love.load()
-	playingGrid={1,1,1,1,1,9,2,0,2,0,2,9,2,0,2,0,2,9,1,1,1,1,1}
+	playingGrid={1,100,9}
 
 	-- create a loop to display grid in a grid like fashion
 --[[
@@ -25,9 +25,14 @@ function love.load()
 	]]
 --love.keyboard.setTextInput(enable)
 	Object=require "dependencies.classic"
-	require "objects.marble"
-	require "objects.enemy"
 	require "library.collision"
+	require "objects.players.marble"
+	require "objects.players.enemy"
+	require "objects.assets.horz_wall"
+	require "objects.assets.vert_wall"
+	
+
+	
 
 	score=0
 
@@ -50,10 +55,16 @@ function love.load()
 
 	wallX=90
 	wallY=90
+	wallVX=190
+	wallVY=90
+	wallWidth=playingGrid[2]
+	wallHeight=100
+--[[	
 	wallHeight=40
 	wallWidth=15
 	wallRadius=3
-
+	
+]]
 	math.randomseed(os.time())
 	randNum = math.random(10)
 	enemyRandLocationX=math.random(100)
@@ -65,8 +76,13 @@ function love.load()
 	-- Marble: Input:  keyboard/joystick/phone, Name: Hero, default: Marble
 	name="Hero"
 	inputOption=inputSelection[1]
+	
+--  Instantiate Objects: 	
 	marble=Marble(inputOption,joystick,name)
 	enemy=Enemy(enemyRandLocationX,enemyRandLocationY)
+	hWall=HorzWall(wallX,wallY,wallWidth)
+	vWall=VertWall(wallVX,wallVY,wallHeight)
+	
 
 end
 
@@ -88,6 +104,7 @@ function love.update(dt)
 	   marble.x, marble.y  |  enemy.x, enemy.y 
 		these give back x,y pos.
 ]]
+--[[
 	collidedEnemy=CheckCollision(marble.x,marble.y,marble.width,marble.height,enemy.x,enemy.y,enemy.width,enemy.height)
 	collidedWallX=CheckCollisionX(marble.x,marble.width,wallX,wallWidth)
 	collidedWallY=CheckCollisionY(marble.y,marble.height,wallY,wallHeight)
@@ -109,7 +126,7 @@ function love.update(dt)
 		-- marble.x=wallX-wallWidth
 	end
 
-	if collidedWallY then 
+	if collidedWallX then 
 		-- print ("wall: X: "..tostring(marble.x).." | Y: "..tostring(marble.y))
 
 		 marble.x=wallX+wallWidth
@@ -117,15 +134,18 @@ function love.update(dt)
 	
 		 marble.x=wallX-wallWidth
 	end
-
+]]
 end
 
 --[[
 	Draw
 ]]
 function love.draw()
-	love.graphics.rectangle("fill",wallX,wallY,wallWidth,wallHeight,wallRadius)
-	marble:draw()
+	
+	hWall:draw()
+	vWall:draw()
+	-- love.graphics.rectangle("fill",wallX,wallY,wallWidth,wallHeight,wallRadius)
+--	marble:draw()
 --[[
 	if not collidedEnemy then
 		enemyImage=enemy:draw()
