@@ -11,7 +11,7 @@ function HorzWall:new(x,y,width)
 end
 
 function HorzWall:update(dt)
-
+		-- add collision here
 end
 
 function HorzWall:draw()

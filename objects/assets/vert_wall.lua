@@ -11,7 +11,7 @@ function VertWall:new(x,y,height)
 end
 
 function VertWall:update(dt)
-
+	-- add collision here
 end
 
 function VertWall:draw()
