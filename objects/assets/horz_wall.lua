@@ -10,8 +10,16 @@ function HorzWall:new(x,y,width)
 	
 end
 
-function HorzWall:update(dt)
-		-- add collision here
+function HorzWall:update(collidedWallX,object,dt)
+
+	if collidedWallX then 
+		-- print ("wall: X: "..tostring(marble.x).." | Y: "..tostring(marble.y))
+
+		 object=self.x+self.width
+	else
+	
+		 object=self.x-self.width
+	end-- add collision here
 end
 
 function HorzWall:draw()

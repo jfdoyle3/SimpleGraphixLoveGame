@@ -98,7 +98,7 @@ function love.update(dt)
 	Updates the objects: sprite, movement, other actions: refer to object.
 ]]
 	marble:update(dt)
-
+	HorzWall:update(collidedWallX,object,dt)
 --[[
 		collision detection here?
 	   marble.x, marble.y  |  enemy.x, enemy.y 
@@ -106,34 +106,12 @@ function love.update(dt)
 ]]
 --[[
 	collidedEnemy=CheckCollision(marble.x,marble.y,marble.width,marble.height,enemy.x,enemy.y,enemy.width,enemy.height)
-	collidedWallX=CheckCollisionX(marble.x,marble.width,wallX,wallWidth)
 	collidedWallY=CheckCollisionY(marble.y,marble.height,wallY,wallHeight)
 
 	if collidedEnemy then 
 		score=CheckCollisionAndScore(marble.x,marble.y,marble.width,marble.height,enemy.x,enemy.y,enemy.width,enemy.height,score)	
 	end
 
-	if collidedWallY then 
-		-- print ("wall: Y: "..tostring(marble.x).." | Y: "..tostring(marble.y))
-
-
-		--right/top side
-		marble.y=wallY+wallHeight
-		-- marble.x=wallX+wallWidth
-
-		--left/botton side
-		marble.y=wallY-wallHeight
-		-- marble.x=wallX-wallWidth
-	end
-
-	if collidedWallX then 
-		-- print ("wall: X: "..tostring(marble.x).." | Y: "..tostring(marble.y))
-
-		 marble.x=wallX+wallWidth
-
-	
-		 marble.x=wallX-wallWidth
-	end
 ]]
 end
 
